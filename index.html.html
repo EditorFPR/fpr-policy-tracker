@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coalition Government Policy Tracker — Fiji Political Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1D6A72;
+    --navy-dark: #155860;
+    --navy-light: #2A8A94;
+    --gold: #1D6A72;
+    --gold-light: #E0F2F3;
+    --bg: #F1F4F9;
+    --surface: #FFFFFF;
+    --border: #DDE3EE;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-muted: #9CA3AF;
+    --green: #166534;
+    --green-bg: #DCFCE7;
+    --blue: #1D4ED8;
+    --blue-bg: #DBEAFE;
+    --amber: #92400E;
+    --amber-bg: #FEF3C7;
+    --red: #991B1B;
+    --red-bg: #FEE2E2;
+    --purple: #5B21B6;
+    --purple-bg: #EDE9FE;
+    --gray: #374151;
+    --gray-bg: #F3F4F6;
+  }
+  html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-primary); }
+  #root { display: flex; flex-direction: column; min-height: 100vh; }
+  button { cursor: pointer; font-family: inherit; }
+  input { font-family: inherit; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+// ─── DATA ──────────────────────────────────────────────────────────────────
+
+const MINISTRIES = [
+  { id: "finance", name: "Ministry of Finance", minister: "Prof. Biman Prasad", color: "#1B3A6B" },
+  { id: "education", name: "Ministry of Education", minister: "Aseri Radrodro", color: "#0369A1" },
+  { id: "health", name: "Ministry of Health", minister: "Dr. Atonio Lalabalavu", color: "#0F766E" },
+  { id: "housing", name: "Ministry of Housing", minister: "Ro Filipe Tuisawau", color: "#7C3AED" },
+  { id: "environment", name: "Ministry of Environment", minister: "Sivendra Michael", color: "#15803D" },
+  { id: "agriculture", name: "Ministry of Agriculture", minister: "Vatimi Rayalu", color: "#92400E" },
+  { id: "ict", name: "Ministry of ICT", minister: "Manoa Kamikamica", color: "#0E7490" },
+  { id: "justice", name: "Ministry of Justice", minister: "Siromi Turaga", color: "#B45309" },
+  { id: "homeaffairs", name: "Ministry of Home Affairs", minister: "Pio Tikoduadua", color: "#DC2626" },
+  { id: "tourism", name: "Ministry of Tourism", minister: "Viliame Gavoka", color: "#0891B2" },
+  { id: "commerce", name: "Ministry of Commerce", minister: "Manoa Kamikamica", color: "#4F46E5" },
+  { id: "infrastructure", name: "Ministry of Infrastructure", minister: "Ro Filipe Tuisawau", color: "#6B7280" },
+  { id: "women", name: "Ministry of Women", minister: "Lynda Tabuya", color: "#DB2777" },
+  { id: "energy", name: "Ministry of Energy", minister: "Filimoni Vosarogo", color: "#D97706" },
+];
+
+const POLICIES = [
+  {
+    id: 1, title: "Free Education — Early Childhood to Year 13",
+    ministry: "education", category: "Social Services", status: "In Progress", progress: 78,
+    description: "Expanding fee-free education to all public schools from early childhood through Year 13, eliminating school fees and providing uniforms, textbooks, and meals.",
+    commitmentType: "Election Promise", year: 2022, updated: "March 2026",
+    milestones: [
+      { label: "Free tuition enacted for Years 1–13", done: true, date: "Jan 2023" },
+      { label: "Early childhood centres enrolled", done: true, date: "Aug 2023" },
+      { label: "Textbook & uniform scheme launched", done: true, date: "Feb 2024" },
+      { label: "School meals pilot (Northern & Eastern)", done: true, date: "Jul 2024" },
+      { label: "School meals nationwide rollout", done: false, date: "Dec 2026" },
+      { label: "Full ECE integration complete", done: false, date: "Jun 2027" },
+    ],
+    impact: "310,000+ students benefitting. Average family saving of FJ$1,200/year.",
+  },
+  {
+    id: 2, title: "Affordable Housing Initiative",
+    ministry: "housing", category: "Infrastructure", status: "In Progress", progress: 45,
+    description: "Constructing 5,000 affordable homes for low-income Fijians over five years, targeting urban settlements in Suva, Lautoka and Labasa.",
+    commitmentType: "Election Promise", year: 2022, updated: "Feb 2026",
+    milestones: [
+      { label: "Land identification & zoning complete", done: true, date: "Mar 2023" },
+      { label: "First 500 homes completed (Suva)", done: true, date: "Dec 2024" },
+      { label: "Lautoka phase breaks ground", done: true, date: "Apr 2025" },
+      { label: "500 homes completed (Lautoka)", done: false, date: "Jun 2026" },
+      { label: "Labasa phase begins", done: false, date: "Jan 2027" },
+      { label: "5,000 homes total complete", done: false, date: "Dec 2027" },
+    ],
+    impact: "1,200 families housed to date. 3,800 units in pipeline.",
+  },
+  {
+    id: 3, title: "National Climate Resilience Fund",
+    ministry: "environment", category: "Climate & Environment", status: "Delivered", progress: 100,
+    description: "Established a FJ$200 million fund to finance climate adaptation and resilience projects across all 14 provinces, with priority for coastal communities.",
+    commitmentType: "Manifesto Commitment", year: 2023, updated: "Dec 2025",
+    milestones: [
+      { label: "Fund legislation passed", done: true, date: "May 2023" },
+      { label: "Board and governance established", done: true, date: "Sep 2023" },
+      { label: "Initial FJ$50M tranche deployed", done: true, date: "Dec 2023" },
+      { label: "Provincial allocation framework set", done: true, date: "Mar 2024" },
+      { label: "Full FJ$200M committed", done: true, date: "Oct 2025" },
+    ],
+    impact: "47 infrastructure projects funded. 60,000 coastal residents covered.",
+  },
+  {
+    id: 4, title: "Cost of Living Support Package",
+    ministry: "finance", category: "Economy", status: "Delivered", progress: 100,
+    description: "A targeted relief package including VAT reduction on essential goods, fuel subsidy, and cash transfers to households earning under FJ$30,000 annually.",
+    commitmentType: "Election Promise", year: 2022, updated: "Sep 2025",
+    milestones: [
+      { label: "VAT reduced from 15% to 9% on essentials", done: true, date: "Jan 2023" },
+      { label: "Fuel levy reduced", done: true, date: "Mar 2023" },
+      { label: "Cash transfer pilot (5,000 households)", done: true, date: "Jun 2023" },
+      { label: "Nationwide cash transfers launched", done: true, date: "Jan 2024" },
+    ],
+    impact: "85,000 households receiving transfers. Average saving FJ$400/household.",
+  },
+  {
+    id: 5, title: "Constitution Review Commission",
+    ministry: "justice", category: "Governance", status: "Under Review", progress: 30,
+    description: "Establishing an independent commission to review and propose amendments to the 2013 Constitution, addressing democratic deficits identified since enactment.",
+    commitmentType: "Manifesto Commitment", year: 2022, updated: "Jan 2026",
+    milestones: [
+      { label: "Commission terms of reference drafted", done: true, date: "Jun 2023" },
+      { label: "Commissioner appointments confirmed", done: true, date: "Nov 2023" },
+      { label: "Public consultations — Viti Levu", done: false, date: "Jun 2026" },
+      { label: "Public consultations — outer islands", done: false, date: "Dec 2026" },
+      { label: "Draft amendments tabled", done: false, date: "Jun 2027" },
+      { label: "Referendum (if required)", done: false, date: "2028" },
+    ],
+    impact: "Consultations pending. 12 constitutional provisions under review.",
+  },
+  {
+    id: 6, title: "Agricultural Modernisation Program",
+    ministry: "agriculture", category: "Economy", status: "In Progress", progress: 55,
+    description: "Subsidies, training and infrastructure to modernise sugarcane and root crop farming, targeting a 30% increase in agricultural GDP by 2027.",
+    commitmentType: "Election Promise", year: 2022, updated: "Feb 2026",
+    milestones: [
+      { label: "Farmer registration database launched", done: true, date: "Mar 2023" },
+      { label: "Fertiliser & seed subsidy scheme active", done: true, date: "Jul 2023" },
+      { label: "300 extension officers deployed", done: true, date: "Jan 2024" },
+      { label: "Irrigation upgrades — sugarcane belt", done: false, date: "Dec 2026" },
+      { label: "Export market expansion agreements", done: false, date: "Jun 2027" },
+    ],
+    impact: "8,500 farmers enrolled. Agricultural GDP up 11% since baseline.",
+  },
+  {
+    id: 7, title: "Digital Government Transformation",
+    ministry: "ict", category: "Governance", status: "In Progress", progress: 62,
+    description: "Digitising all core government services, creating a citizen identity portal, and achieving 90% of public transactions available online by 2027.",
+    commitmentType: "Manifesto Commitment", year: 2023, updated: "Mar 2026",
+    milestones: [
+      { label: "Digital ID framework legislated", done: true, date: "Apr 2023" },
+      { label: "Citizens portal (mygov.fj) launched", done: true, date: "Nov 2023" },
+      { label: "Birth/death certificates online", done: true, date: "Mar 2024" },
+      { label: "Tax filing digitised", done: true, date: "Jul 2024" },
+      { label: "Land registry digital integration", done: false, date: "Dec 2026" },
+      { label: "90% services online target met", done: false, date: "Dec 2027" },
+    ],
+    impact: "340,000 citizens registered on portal. Processing times cut by 65%.",
+  },
+  {
+    id: 8, title: "Universal Healthcare Access",
+    ministry: "health", category: "Social Services", status: "In Progress", progress: 40,
+    description: "Ensuring all Fijians have access to free primary healthcare, including new health centres in underserved areas and universal pharmaceutical coverage.",
+    commitmentType: "Election Promise", year: 2022, updated: "Feb 2026",
+    milestones: [
+      { label: "Free outpatient care reinstated nationwide", done: true, date: "Jan 2023" },
+      { label: "12 new health sub-centres opened", done: true, date: "Jun 2024" },
+      { label: "Essential medicines list expanded (450 items)", done: false, date: "Sep 2026" },
+      { label: "Telehealth platform for outer islands", done: false, date: "Mar 2027" },
+      { label: "All divisional hospitals upgraded", done: false, date: "Dec 2027" },
+    ],
+    impact: "920,000 patients using free outpatient care annually.",
+  },
+  {
+    id: 9, title: "Police Accountability & Reform Commission",
+    ministry: "homeaffairs", category: "Governance", status: "Delayed", progress: 18,
+    description: "Establishing an independent oversight body for the Fiji Police Force, with powers to investigate complaints and recommend disciplinary action.",
+    commitmentType: "Election Promise", year: 2022, updated: "Nov 2025",
+    milestones: [
+      { label: "Draft legislation prepared", done: true, date: "Aug 2023" },
+      { label: "Stakeholder consultation", done: true, date: "Jan 2024" },
+      { label: "Bill tabled in Parliament", done: false, date: "Pending — delayed" },
+      { label: "Commission established", done: false, date: "TBD" },
+    ],
+    impact: "Legislation stalled in parliamentary committee since early 2024.",
+    delayReason: "Parliamentary scheduling and inter-agency negotiations have delayed the bill's second reading.",
+  },
+  {
+    id: 10, title: "Tourism Recovery & Diversification Strategy",
+    ministry: "tourism", category: "Economy", status: "Delivered", progress: 100,
+    description: "Post-COVID recovery plan for Fiji's tourism sector, including airline route subsidies, destination marketing campaigns, and eco-tourism development.",
+    commitmentType: "Manifesto Commitment", year: 2022, updated: "Jun 2025",
+    milestones: [
+      { label: "Air routes recovery fund established", done: true, date: "Feb 2023" },
+      { label: "Tourism Fiji rebrand launched", done: true, date: "Jun 2023" },
+      { label: "Eco-tourism certification scheme", done: true, date: "Nov 2023" },
+      { label: "Visitor arrivals exceed 900,000", done: true, date: "Apr 2025" },
+    ],
+    impact: "Visitor arrivals reached 960,000 in 2025, surpassing pre-COVID peak.",
+  },
+  {
+    id: 11, title: "Small Business Support & Growth Fund",
+    ministry: "commerce", category: "Economy", status: "In Progress", progress: 70,
+    description: "FJ$50M fund providing low-interest loans, mentorship and market access support for small and micro enterprises, targeting 3,000 businesses.",
+    commitmentType: "Election Promise", year: 2022, updated: "Mar 2026",
+    milestones: [
+      { label: "Fund established at Fiji Development Bank", done: true, date: "Mar 2023" },
+      { label: "1,000 businesses financed", done: true, date: "Dec 2023" },
+      { label: "2,000 businesses financed", done: true, date: "Aug 2024" },
+      { label: "3,000 businesses target", done: false, date: "Dec 2026" },
+    ],
+    impact: "2,100 businesses supported. FJ$38M disbursed. 6,800 jobs created.",
+  },
+  {
+    id: 12, title: "Rural Roads & Bridges Rehabilitation",
+    ministry: "infrastructure", category: "Infrastructure", status: "In Progress", progress: 35,
+    description: "Rehabilitating 800km of rural roads and replacing 45 deteriorating bridges across Viti Levu, Vanua Levu and key outer islands by 2028.",
+    commitmentType: "Manifesto Commitment", year: 2023, updated: "Jan 2026",
+    milestones: [
+      { label: "Asset condition survey complete", done: true, date: "May 2023" },
+      { label: "Contracts awarded (Phase 1)", done: true, date: "Jan 2024" },
+      { label: "280km roads rehabilitated", done: true, date: "Dec 2025" },
+      { label: "Phase 2 contracts awarded", done: false, date: "Jul 2026" },
+      { label: "800km target complete", done: false, date: "Dec 2028" },
+    ],
+    impact: "280km complete. 12 bridges replaced. 85,000 rural residents with improved access.",
+  },
+  {
+    id: 13, title: "Women's Economic Empowerment Program",
+    ministry: "women", category: "Social Services", status: "Not Started", progress: 0,
+    description: "A dedicated program including business grants, childcare subsidies, and legal aid to improve economic participation for Fijian women.",
+    commitmentType: "Election Promise", year: 2022, updated: "Oct 2025",
+    milestones: [
+      { label: "Program design & consultation", done: false, date: "Q3 2026" },
+      { label: "Funding secured", done: false, date: "Q4 2026" },
+      { label: "Pilot in two provinces", done: false, date: "Q1 2027" },
+      { label: "National rollout", done: false, date: "2028" },
+    ],
+    impact: "Not yet commenced. Awaiting budget allocation in 2026–27 estimates.",
+    delayReason: "Budgetary pressures have deferred program design phase.",
+  },
+  {
+    id: 14, title: "Media Freedom Restoration Act",
+    ministry: "justice", category: "Governance", status: "Delivered", progress: 100,
+    description: "Repealing the restrictive 2010 Media Industry Development Decree and establishing a new independent media council.",
+    commitmentType: "Election Promise", year: 2022, updated: "Apr 2023",
+    milestones: [
+      { label: "Media Industry Development Act repealed", done: true, date: "Apr 2023" },
+      { label: "MIDA dissolved", done: true, date: "Apr 2023" },
+      { label: "Independent Media Council established", done: true, date: "Aug 2023" },
+    ],
+    impact: "RSF Press Freedom Index: Fiji moved up 17 places in 2024.",
+  },
+  {
+    id: 15, title: "Renewable Energy 2030 Transition",
+    ministry: "energy", category: "Climate & Environment", status: "In Progress", progress: 25,
+    description: "Reaching 100% renewable electricity generation by 2030 through solar, hydro and wind investments, and phasing out diesel generators on outer islands.",
+    commitmentType: "Manifesto Commitment", year: 2023, updated: "Mar 2026",
+    milestones: [
+      { label: "Renewable energy audit complete", done: true, date: "Jun 2023" },
+      { label: "100MW solar tender awarded", done: true, date: "Feb 2025" },
+      { label: "First 30MW solar online", done: false, date: "Dec 2026" },
+      { label: "Outer island diesel phase-out begins", done: false, date: "2027" },
+      { label: "100% renewable target", done: false, date: "2030" },
+    ],
+    impact: "Grid currently at 62% renewable. Target: 100% by 2030.",
+  },
+];
+
+const STATUS_META = {
+  "Delivered":    { color: "var(--green)",  bg: "var(--green-bg)",  dot: "#16A34A" },
+  "In Progress":  { color: "var(--blue)",   bg: "var(--blue-bg)",   dot: "#2563EB" },
+  "Delayed":      { color: "var(--red)",    bg: "var(--red-bg)",    dot: "#DC2626" },
+  "Under Review": { color: "var(--purple)", bg: "var(--purple-bg)", dot: "#7C3AED" },
+  "Not Started":  { color: "var(--gray)",   bg: "var(--gray-bg)",   dot: "#6B7280" },
+};
+
+const CATEGORIES = ["All", "Economy", "Social Services", "Infrastructure", "Climate & Environment", "Governance"];
+const STATUSES   = ["All", "Delivered", "In Progress", "Under Review", "Delayed", "Not Started"];
+
+// ─── SMALL COMPONENTS ──────────────────────────────────────────────────────
+
+const Badge = ({ status }) => {
+  const m = STATUS_META[status] || STATUS_META["Not Started"];
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 5,
+      padding: "3px 10px", borderRadius: 20, fontSize: 12, fontWeight: 600,
+      color: m.color, background: m.bg,
+    }}>
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: m.dot, flexShrink: 0 }} />
+      {status}
+    </span>
+  );
+};
+
+const ProgressBar = ({ value, status }) => {
+  const colors = { "Delivered": "#16A34A", "In Progress": "#2563EB", "Delayed": "#DC2626", "Under Review": "#7C3AED", "Not Started": "#D1D5DB" };
+  return (
+    <div style={{ height: 6, background: "#E5E7EB", borderRadius: 3, overflow: "hidden" }}>
+      <div style={{ height: "100%", width: `${value}%`, background: colors[status] || "#9CA3AF", borderRadius: 3, transition: "width 0.6s ease" }} />
+    </div>
+  );
+};
+
+const StatCard = ({ value, label, sub, color }) => (
+  <div style={{ background: "#fff", borderRadius: 12, padding: "20px 24px", border: "1px solid var(--border)", flex: 1 }}>
+    <div style={{ fontSize: 32, fontWeight: 700, color: color || "var(--navy)", fontFamily: "'Libre Baskerville', serif" }}>{value}</div>
+    <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", marginTop: 2 }}>{label}</div>
+    {sub && <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 4 }}>{sub}</div>}
+  </div>
+);
+
+// ─── POLICY DETAIL PANEL ───────────────────────────────────────────────────
+
+const PolicyDetail = ({ policy, ministries, onClose }) => {
+  const ministry = ministries.find(m => m.id === policy.ministry);
+  const done = policy.milestones.filter(m => m.done).length;
+  return (
+    <div style={{
+      position: "fixed", inset: 0, zIndex: 200,
+      display: "flex", justifyContent: "flex-end",
+    }}>
+      <div onClick={onClose} style={{ flex: 1, background: "rgba(0,0,0,0.4)", cursor: "pointer" }} />
+      <div style={{
+        width: "min(560px, 100vw)", background: "#fff", overflowY: "auto",
+        display: "flex", flexDirection: "column", boxShadow: "-4px 0 32px rgba(0,0,0,0.15)",
+        animation: "slideIn 0.25s ease",
+      }}>
+        {/* Header */}
+        <div style={{ background: "var(--navy)", padding: "28px 28px 24px", color: "#fff" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 600, opacity: 0.7, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
+                {policy.commitmentType} · {policy.category}
+              </div>
+              <h2 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 20, lineHeight: 1.3, fontWeight: 700 }}>{policy.title}</h2>
+              <div style={{ marginTop: 12, fontSize: 13, opacity: 0.8 }}>{ministry?.name}</div>
+            </div>
+            <button onClick={onClose} style={{ background: "rgba(255,255,255,0.15)", border: "none", color: "#fff", width: 32, height: 32, borderRadius: 8, fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, cursor: "pointer" }}>×</button>
+          </div>
+          <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
+            <Badge status={policy.status} />
+            <span style={{ fontSize: 13, opacity: 0.8 }}>Updated {policy.updated}</span>
+          </div>
+        </div>
+
+        {/* Progress */}
+        <div style={{ padding: "20px 28px", borderBottom: "1px solid var(--border)" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+            <span style={{ fontSize: 13, fontWeight: 600 }}>Overall Progress</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--navy)" }}>{policy.progress}%</span>
+          </div>
+          <ProgressBar value={policy.progress} status={policy.status} />
+          <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 8 }}>
+            {done} of {policy.milestones.length} milestones completed
+          </div>
+        </div>
+
+        {/* Description */}
+        <div style={{ padding: "20px 28px", borderBottom: "1px solid var(--border)" }}>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)", textWrap: "pretty" }}>{policy.description}</p>
+          {policy.delayReason && (
+            <div style={{ marginTop: 14, background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: 8, padding: "10px 14px", fontSize: 13, color: "#991B1B" }}>
+              <strong>Delay note:</strong> {policy.delayReason}
+            </div>
+          )}
+        </div>
+
+        {/* Milestones */}
+        <div style={{ padding: "20px 28px", borderBottom: "1px solid var(--border)" }}>
+          <h3 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 16 }}>Milestones</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+            {policy.milestones.map((m, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, position: "relative" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
+                  <div style={{
+                    width: 20, height: 20, borderRadius: "50%", flexShrink: 0, zIndex: 1,
+                    background: m.done ? "#16A34A" : "#E5E7EB",
+                    border: m.done ? "none" : "2px solid #D1D5DB",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    {m.done && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  </div>
+                  {i < policy.milestones.length - 1 && (
+                    <div style={{ width: 2, flex: 1, minHeight: 16, background: m.done ? "#BBF7D0" : "#E5E7EB", margin: "2px 0" }} />
+                  )}
+                </div>
+                <div style={{ paddingBottom: i < policy.milestones.length - 1 ? 14 : 0, paddingTop: 0 }}>
+                  <div style={{ fontSize: 14, fontWeight: m.done ? 500 : 400, color: m.done ? "var(--text-primary)" : "var(--text-secondary)" }}>{m.label}</div>
+                  <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>{m.date}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Impact */}
+        {policy.impact && (
+          <div style={{ padding: "20px 28px" }}>
+            <h3 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 10 }}>Reported Impact</h3>
+            <div style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 8, padding: "12px 16px", fontSize: 14, color: "#1E40AF", lineHeight: 1.6 }}>
+              {policy.impact}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// ─── DASHBOARD VIEW ────────────────────────────────────────────────────────
+
+const DashboardView = ({ policies, ministries, onSelectPolicy }) => {
+  const total = policies.length;
+  const delivered = policies.filter(p => p.status === "Delivered").length;
+  const inProgress = policies.filter(p => p.status === "In Progress").length;
+  const delayed = policies.filter(p => p.status === "Delayed").length;
+  const notStarted = policies.filter(p => p.status === "Not Started").length;
+
+  const byCategory = CATEGORIES.slice(1).map(cat => ({
+    cat,
+    count: policies.filter(p => p.category === cat).length,
+    delivered: policies.filter(p => p.category === cat && p.status === "Delivered").length,
+  }));
+
+  const recent = [...policies].sort((a, b) => b.progress - a.progress).slice(0, 5);
+
+  return (
+    <div style={{ maxWidth: 1140, margin: "0 auto", padding: "32px 24px" }}>
+      {/* Title */}
+      <div style={{ marginBottom: 28 }}>
+        <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>Coalition Government Policy Tracker</h1>
+        <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Tracking {total} commitments made by the Coalition Government since December 2022. Updated regularly by the Fiji Political Review.</p>
+      </div>
+
+      {/* Stats Row */}
+      <div style={{ display: "flex", gap: 16, marginBottom: 28, flexWrap: "wrap" }}>
+        <StatCard value={total} label="Total Commitments" sub="Across all ministries" />
+        <StatCard value={`${Math.round((delivered/total)*100)}%`} label="Delivered" sub={`${delivered} of ${total} complete`} color="#16A34A" />
+        <StatCard value={inProgress} label="In Progress" sub="Active implementation" color="#2563EB" />
+        <StatCard value={delayed} label="Delayed or Stalled" sub={`${notStarted} not yet started`} color="#DC2626" />
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 24 }}>
+        {/* Progress by Category */}
+        <div style={{ background: "#fff", borderRadius: 12, padding: "24px", border: "1px solid var(--border)" }}>
+          <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 20 }}>Progress by Policy Area</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {byCategory.map(({ cat, count, delivered }) => (
+              <div key={cat}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                  <span style={{ fontSize: 13, fontWeight: 500 }}>{cat}</span>
+                  <span style={{ fontSize: 12, color: "var(--text-muted)" }}>{delivered}/{count} delivered</span>
+                </div>
+                <div style={{ height: 8, background: "#EFF2F7", borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(delivered/count)*100}%`, background: "var(--navy)", borderRadius: 4 }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Status Breakdown */}
+        <div style={{ background: "#fff", borderRadius: 12, padding: "24px", border: "1px solid var(--border)" }}>
+          <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 20 }}>Status Overview</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {Object.entries(STATUS_META).map(([status, m]) => {
+              const count = policies.filter(p => p.status === status).length;
+              return (
+                <div key={status} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: m.dot, flexShrink: 0 }} />
+                  <span style={{ fontSize: 13, flex: 1 }}>{status}</span>
+                  <div style={{ flex: 2, height: 8, background: "#EFF2F7", borderRadius: 4, overflow: "hidden" }}>
+                    <div style={{ height: "100%", width: `${(count/total)*100}%`, background: m.dot, borderRadius: 4 }} />
+                  </div>
+                  <span style={{ fontSize: 13, fontWeight: 600, minWidth: 24, textAlign: "right" }}>{count}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Recent / Highlighted Policies */}
+      <div style={{ background: "#fff", borderRadius: 12, padding: "24px", border: "1px solid var(--border)" }}>
+        <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 16 }}>Highest Progressed Policies</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          {recent.map((p, i) => {
+            const min = ministries.find(m => m.id === p.ministry);
+            return (
+              <div key={p.id} onClick={() => onSelectPolicy(p)} style={{
+                display: "flex", alignItems: "center", gap: 16, padding: "14px 12px", cursor: "pointer",
+                borderRadius: 8, transition: "background 0.15s",
+                borderBottom: i < recent.length - 1 ? "1px solid var(--border)" : "none",
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = "#F8FAFC"}
+              onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+                <div style={{ flex: 3, minWidth: 0 }}>
+                  <div style={{ fontSize: 14, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.title}</div>
+                  <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>{min?.name}</div>
+                </div>
+                <Badge status={p.status} />
+                <div style={{ flex: 1, minWidth: 80 }}>
+                  <ProgressBar value={p.progress} status={p.status} />
+                  <div style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 4, textAlign: "right" }}>{p.progress}%</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── POLICIES LIST VIEW ────────────────────────────────────────────────────
+
+const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
+  const [search, setSearch] = React.useState("");
+  const [filterStatus, setFilterStatus] = React.useState("All");
+  const [filterCat, setFilterCat] = React.useState("All");
+  const [filterMin, setFilterMin] = React.useState("All");
+
+  const filtered = policies.filter(p => {
+    if (filterStatus !== "All" && p.status !== filterStatus) return false;
+    if (filterCat !== "All" && p.category !== filterCat) return false;
+    if (filterMin !== "All" && p.ministry !== filterMin) return false;
+    if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false;
+    return true;
+  });
+
+  const selectStyle = { padding: "8px 12px", border: "1px solid var(--border)", borderRadius: 8, fontSize: 13, background: "#fff", color: "var(--text-primary)", cursor: "pointer" };
+
+  return (
+    <div style={{ maxWidth: 1140, margin: "0 auto", padding: "32px 24px" }}>
+      <div style={{ marginBottom: 24 }}>
+        <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>All Policies</h1>
+        <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Browse and filter all tracked government commitments</p>
+      </div>
+
+      {/* Filters */}
+      <div style={{ background: "#fff", borderRadius: 12, padding: "16px 20px", border: "1px solid var(--border)", marginBottom: 20, display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+        <input
+          value={search} onChange={e => setSearch(e.target.value)}
+          placeholder="Search policies…"
+          style={{ ...selectStyle, flex: "1 1 200px", outline: "none" }}
+        />
+        <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={selectStyle}>
+          {STATUSES.map(s => <option key={s}>{s}</option>)}
+        </select>
+        <select value={filterCat} onChange={e => setFilterCat(e.target.value)} style={selectStyle}>
+          {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+        </select>
+        <select value={filterMin} onChange={e => setFilterMin(e.target.value)} style={selectStyle}>
+          <option value="All">All Ministries</option>
+          {ministries.map(m => <option key={m.id} value={m.id}>{m.name.replace("Ministry of ","")}</option>)}
+        </select>
+        <span style={{ fontSize: 13, color: "var(--text-muted)", whiteSpace: "nowrap" }}>{filtered.length} results</span>
+      </div>
+
+      {/* Cards */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {filtered.map(p => {
+          const min = ministries.find(m => m.id === p.ministry);
+          return (
+            <div key={p.id} onClick={() => onSelectPolicy(p)}
+              style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 12, padding: "18px 20px", cursor: "pointer", transition: "box-shadow 0.15s, border-color 0.15s" }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 4px 16px rgba(27,58,107,0.1)"; e.currentTarget.style.borderColor = "#BFCDE8"; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "var(--border)"; }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginBottom: 6 }}>
+                    <Badge status={p.status} />
+                    <span style={{ fontSize: 11, background: "#F1F4F9", color: "var(--text-secondary)", padding: "2px 8px", borderRadius: 10, fontWeight: 500 }}>{p.category}</span>
+                    <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{p.commitmentType}</span>
+                  </div>
+                  <h3 style={{ fontSize: 15, fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.4 }}>{p.title}</h3>
+                  <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>{min?.name} · Minister: {min?.minister}</div>
+                </div>
+                <div style={{ minWidth: 120, flexShrink: 0 }}>
+                  <div style={{ fontSize: 12, color: "var(--text-muted)", textAlign: "right", marginBottom: 6 }}>
+                    {p.milestones.filter(m => m.done).length}/{p.milestones.length} milestones
+                  </div>
+                  <ProgressBar value={p.progress} status={p.status} />
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "var(--navy)", textAlign: "right", marginTop: 4 }}>{p.progress}%</div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        {filtered.length === 0 && (
+          <div style={{ textAlign: "center", padding: "48px", color: "var(--text-muted)", background: "#fff", borderRadius: 12, border: "1px solid var(--border)" }}>
+            No policies match your filters.
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// ─── MINISTRIES VIEW ───────────────────────────────────────────────────────
+
+const MinistriesView = ({ policies, ministries, onSelectPolicy }) => (
+  <div style={{ maxWidth: 1140, margin: "0 auto", padding: "32px 24px" }}>
+    <div style={{ marginBottom: 28 }}>
+      <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>By Ministry</h1>
+      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Policy progress broken down by responsible ministry</p>
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
+      {ministries.map(min => {
+        const mPolicies = policies.filter(p => p.ministry === min.id);
+        if (!mPolicies.length) return null;
+        const delivered = mPolicies.filter(p => p.status === "Delivered").length;
+        const avgProg = Math.round(mPolicies.reduce((a, b) => a + b.progress, 0) / mPolicies.length);
+        return (
+          <div key={min.id} style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 12, overflow: "hidden" }}>
+            <div style={{ background: min.color, padding: "16px 20px", color: "#fff" }}>
+              <div style={{ fontSize: 13, fontWeight: 700 }}>{min.name}</div>
+              <div style={{ fontSize: 12, opacity: 0.8, marginTop: 3 }}>Minister: {min.minister}</div>
+            </div>
+            <div style={{ padding: "16px 20px" }}>
+              <div style={{ display: "flex", gap: 16, marginBottom: 14 }}>
+                <div style={{ flex: 1, textAlign: "center" }}>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: "var(--navy)" }}>{mPolicies.length}</div>
+                  <div style={{ fontSize: 11, color: "var(--text-muted)" }}>Policies</div>
+                </div>
+                <div style={{ flex: 1, textAlign: "center" }}>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: "#16A34A" }}>{delivered}</div>
+                  <div style={{ fontSize: 11, color: "var(--text-muted)" }}>Delivered</div>
+                </div>
+                <div style={{ flex: 1, textAlign: "center" }}>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: "var(--navy)" }}>{avgProg}%</div>
+                  <div style={{ fontSize: 11, color: "var(--text-muted)" }}>Avg. Progress</div>
+                </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                {mPolicies.map(p => (
+                  <div key={p.id} onClick={() => onSelectPolicy(p)} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", padding: "6px 8px", borderRadius: 6, transition: "background 0.1s" }}
+                    onMouseEnter={e => e.currentTarget.style.background = "#F8FAFC"}
+                    onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: STATUS_META[p.status]?.dot, flexShrink: 0 }} />
+                    <span style={{ fontSize: 12, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.title}</span>
+                    <span style={{ fontSize: 11, color: "var(--text-muted)", flexShrink: 0 }}>{p.progress}%</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+);
+
+// ─── HEADER ────────────────────────────────────────────────────────────────
+
+const Header = ({ view, setView }) => {
+  const navBtn = (label, id) => (
+    <button onClick={() => setView(id)} style={{
+      background: "none", border: "none", color: view === id ? "#fff" : "rgba(255,255,255,0.65)",
+      fontSize: 14, fontWeight: view === id ? 600 : 400, padding: "8px 16px", borderRadius: 8, transition: "all 0.15s",
+      borderBottom: view === id ? "2px solid var(--gold)" : "2px solid transparent",
+    }}>{label}</button>
+  );
+  return (
+    <header style={{ background: "var(--navy)", borderBottom: "1px solid rgba(255,255,255,0.1)", position: "sticky", top: 0, zIndex: 100 }}>
+      <div style={{ maxWidth: 1140, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", gap: 24, height: 60 }}>
+        {/* Logo area */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(255,255,255,0.15)", border: "2px solid rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="#ffffff"/>
+            </svg>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", fontWeight: 500, letterSpacing: "0.04em", lineHeight: 1 }}>FIJI POLITICAL REVIEW</div>
+            <div style={{ fontSize: 14, color: "#fff", fontWeight: 700, lineHeight: 1.3, fontFamily: "'Libre Baskerville', serif" }}>Coalition Policy Tracker</div>
+          </div>
+        </div>
+        <nav style={{ display: "flex", marginLeft: 16 }}>
+          {navBtn("Dashboard", "dashboard")}
+          {navBtn("Policies", "policies")}
+          {navBtn("Ministries", "ministries")}
+        </nav>
+        <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>
+          Updated April 2026
+        </div>
+      </div>
+    </header>
+  );
+};
+
+// ─── APP ───────────────────────────────────────────────────────────────────
+
+const App = () => {
+  const [view, setView] = React.useState("dashboard");
+  const [selectedPolicy, setSelectedPolicy] = React.useState(null);
+
+  const openPolicy = (p) => setSelectedPolicy(p);
+  const closePolicy = () => setSelectedPolicy(null);
+
+  return (
+    <div style={{ minHeight: "100vh", background: "var(--bg)" }}>
+      <style>{`
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+      `}</style>
+      <Header view={view} setView={setView} />
+      <main>
+        {view === "dashboard" && <DashboardView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={openPolicy} />}
+        {view === "policies" && <PoliciesView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={openPolicy} />}
+        {view === "ministries" && <MinistriesView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={openPolicy} />}
+      </main>
+      {selectedPolicy && (
+        <PolicyDetail policy={selectedPolicy} ministries={MINISTRIES} onClose={closePolicy} />
+      )}
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
