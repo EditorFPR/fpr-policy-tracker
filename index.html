@@ -56,7 +56,7 @@ const MINISTRIES = [
   { id: "education", name: "Ministry of Education", minister: "Aseri Radrodro", color: "#0369A1" },
   { id: "health", name: "Ministry of Health & Medical Services", minister: "Dr. Atonio Lalabalavu", color: "#0F766E" },
   { id: "publicworks", name: "Ministry of Public Works", minister: "Ro Filipe Tuisawau", color: "#7C3AED" },
-  { id: "information", name: "Ministry of Information", minister: "Lynda Tabuya", color: "#DB2777" },
+  { id: "information", name: "Ministry of Information, Environment & Climate Change", minister: "Lynda Tabuya", color: "#DB2777", note: "Expanded portfolio from Aug 2025" },
   { id: "tourism", name: "Ministry of Tourism", minister: "Viliame Gavoka (DPM)", color: "#0891B2" },
   { id: "lands", name: "Ministry of Lands", minister: "Filimoni Vosarogo", color: "#B45309" },
   { id: "defence", name: "Ministry of Defence & Home Affairs", minister: "Pio Tikoduadua", color: "#DC2626" },
@@ -315,6 +315,35 @@ const POLICIES = [
     impact: "Decisive pivot away from Bainimarama's 'Look North' China policy. Chinese police no longer embedded in Fiji Police Force. Taiwan mission formally reinstated. Vuvale Partnership with Australia significantly strengthened.",
   },
   {
+    id: 20, title: "MIDA Repeal & Press Freedom",
+    ministry: "information", category: "Governance", status: "Delivered", progress: 100,
+    description: "The Coalition Government repealed the Media Industry Development Act (MIDA) 2010 on 6 April 2023 — one of the Pacific's most restrictive media laws, introduced by the Bainimarama military government after the 2006 coup. MIDA gave authorities sweeping powers to investigate journalists, conduct searches and seizures, and force journalists to reveal sources. Its repeal was a key coalition campaign promise and was welcomed by the Fijian Media Association and international press freedom advocates including Reporters Without Borders.",
+    commitmentType: "Coalition Manifesto Promise", year: 2022, updated: "April 2023",
+    milestones: [
+      { label: "MIDA repeal pledged during 2022 election campaign", done: true, date: "2022" },
+      { label: "Bill tabled in Parliament by AG Siromi Turaga", done: true, date: "Apr 2023" },
+      { label: "Parliament votes 29-21 to repeal MIDA", done: true, date: "6 Apr 2023" },
+      { label: "MIDA formally repealed — press freedom restored", done: true, date: "6 Apr 2023" },
+    ],
+    impact: "MIDA repealed after 13 years. Fiji's media no longer subject to government-controlled authority with powers of search, seizure, and forced source disclosure. Welcomed by the Fijian Media Association and international press freedom organisations.",
+  },
+  {
+    id: 21, title: "Climate Action & NDC 3.0",
+    ministry: "information", category: "Climate", status: "In Progress", progress: 55,
+    description: "The Coalition Government has advanced Fiji's climate commitments through the National Energy Policy 2023-2030, submission of Fiji's third Nationally Determined Contribution (NDC 3.0) to the UNFCCC in November 2025, and the launch of the Ministry of Environment and Climate Change Strategic Development Plan 2026-2031. NDC 3.0 commits Fiji to a 36% reduction in energy sector greenhouse gas emissions below business-as-usual by 2035 and 100% renewable electricity generation by 2035. Energy Fiji Limited targets 90% renewable power by 2025 and 99% by 2030.",
+    commitmentType: "Coalition Government Policy", year: 2023, updated: "May 2026",
+    milestones: [
+      { label: "National Energy Policy 2023-2030 established", done: true, date: "2023" },
+      { label: "Digital Climate Transparency Platform launched (with GGGI)", done: true, date: "2024" },
+      { label: "NDC 3.0 national consultations conducted", done: true, date: "2024-2025" },
+      { label: "NDC 3.0 submitted to UNFCCC", done: true, date: "Nov 2025" },
+      { label: "Ministry Strategic Development Plan 2026-2031 launched", done: true, date: "May 2026" },
+      { label: "100% renewable electricity target achieved", done: false, date: "2035" },
+      { label: "36% GHG emissions reduction target achieved", done: false, date: "2035" },
+    ],
+    impact: "NDC 3.0 submitted committing to 100% renewable electricity and 36% GHG reduction by 2035. National Energy Policy and Ministry Strategic Plan 2026-2031 in place. Digital climate transparency platform operational.",
+  },
+  {
     id: 15, title: "Jerusalem Embassy Establishment",
     ministry: "foreign", category: "Foreign Policy", status: "Delivered", progress: 100,
     description: "SODELPA manifesto commitment to establish Fiji embassy in Jerusalem. Successfully delivered by the Coalition Government.",
@@ -355,7 +384,7 @@ const getParty = (commitmentType) => {
   return PARTY_META["Government"];
 };
 
-const CATEGORIES = ["All", "Economy", "Social Services", "Infrastructure", "Governance", "Foreign Policy", "Symbolic Reconciliation"];
+const CATEGORIES = ["All", "Economy", "Social Services", "Infrastructure", "Governance", "Foreign Policy", "Climate", "Symbolic Reconciliation"];
 const STATUSES   = ["All", "Delivered", "In Progress", "Under Review", "Delayed", "Not Started"];
 const PARTIES    = ["All", "PAP", "NFP", "SODELPA", "Coalition", "PAP/NFP", "Government"];
 
