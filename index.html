@@ -306,8 +306,29 @@ const STATUS_META = {
   "Not Started":  { color: "var(--gray)",   bg: "var(--gray-bg)",   dot: "#6B7280" },
 };
 
+const PARTY_META = {
+  "PAP":       { label: "PAP",       color: "#1D4ED8", bg: "#DBEAFE" },
+  "NFP":       { label: "NFP",       color: "#166534", bg: "#DCFCE7" },
+  "SODELPA":   { label: "SODELPA",   color: "#92400E", bg: "#FEF3C7" },
+  "Coalition": { label: "Coalition", color: "#5B21B6", bg: "#EDE9FE" },
+  "PAP/NFP":   { label: "PAP/NFP",   color: "#0E7490", bg: "#CFFAFE" },
+  "Government":{ label: "Government",color: "#374151", bg: "#F3F4F6" },
+};
+
+const getParty = (commitmentType) => {
+  if (!commitmentType) return PARTY_META["Government"];
+  const t = commitmentType.toUpperCase();
+  if (t.includes("PAP") && t.includes("NFP")) return PARTY_META["PAP/NFP"];
+  if (t.includes("PAP"))       return PARTY_META["PAP"];
+  if (t.includes("NFP"))       return PARTY_META["NFP"];
+  if (t.includes("SODELPA"))   return PARTY_META["SODELPA"];
+  if (t.includes("COALITION")) return PARTY_META["Coalition"];
+  return PARTY_META["Government"];
+};
+
 const CATEGORIES = ["All", "Economy", "Social Services", "Infrastructure", "Governance", "Foreign Policy", "Symbolic Reconciliation"];
 const STATUSES   = ["All", "Delivered", "In Progress", "Under Review", "Delayed", "Not Started"];
+const PARTIES    = ["All", "PAP", "NFP", "SODELPA", "Coalition", "PAP/NFP", "Government"];
 
 // ─── COMPONENTS (same as original, just using updated data) ──────────────────────────────────────
 
@@ -325,7 +346,18 @@ const Badge = ({ status }) => {
   );
 };
 
-const ProgressBar = ({ value, status }) => {
+const PartyBadge = ({ commitmentType }) => {
+  const p = getParty(commitmentType);
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center",
+      padding: "2px 8px", borderRadius: 10, fontSize: 11, fontWeight: 600,
+      color: p.color, background: p.bg, letterSpacing: "0.02em",
+    }}>
+      {p.label}
+    </span>
+  );
+};
   const colors = { "Delivered": "#16A34A", "In Progress": "#2563EB", "Delayed": "#DC2626", "Under Review": "#7C3AED", "Not Started": "#D1D5DB" };
   return (
     <div style={{ height: 6, background: "#E5E7EB", borderRadius: 3, overflow: "hidden" }}>
@@ -369,8 +401,9 @@ const PolicyDetail = ({ policy, ministries, onClose }) => {
             </div>
             <button onClick={onClose} style={{ background: "rgba(255,255,255,0.15)", border: "none", color: "#fff", width: 32, height: 32, borderRadius: 8, fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, cursor: "pointer" }}>×</button>
           </div>
-          <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
+          <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
             <Badge status={policy.status} />
+            <PartyBadge commitmentType={policy.commitmentType} />
             <span style={{ fontSize: 13, opacity: 0.8 }}>Updated {policy.updated}</span>
           </div>
         </div>
@@ -549,11 +582,13 @@ const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
   const [filterStatus, setFilterStatus] = React.useState("All");
   const [filterCat, setFilterCat] = React.useState("All");
   const [filterMin, setFilterMin] = React.useState("All");
+  const [filterParty, setFilterParty] = React.useState("All");
 
   const filtered = policies.filter(p => {
     if (filterStatus !== "All" && p.status !== filterStatus) return false;
     if (filterCat !== "All" && p.category !== filterCat) return false;
     if (filterMin !== "All" && p.ministry !== filterMin) return false;
+    if (filterParty !== "All" && getParty(p.commitmentType).label !== filterParty) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false;
     return true;
   });
@@ -575,6 +610,10 @@ const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
         />
         <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={selectStyle}>
           {STATUSES.map(s => <option key={s}>{s}</option>)}
+        </select>
+        <select value={filterParty} onChange={e => setFilterParty(e.target.value)} style={selectStyle}>
+          <option value="All">All Parties</option>
+          {PARTIES.filter(p => p !== "All").map(p => <option key={p} value={p}>{p}</option>)}
         </select>
         <select value={filterCat} onChange={e => setFilterCat(e.target.value)} style={selectStyle}>
           {CATEGORIES.map(c => <option key={c}>{c}</option>)}
@@ -598,8 +637,8 @@ const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginBottom: 6 }}>
                     <Badge status={p.status} />
+                    <PartyBadge commitmentType={p.commitmentType} />
                     <span style={{ fontSize: 11, background: "#F1F4F9", color: "var(--text-secondary)", padding: "2px 8px", borderRadius: 10, fontWeight: 500 }}>{p.category}</span>
-                    <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{p.commitmentType}</span>
                   </div>
                   <h3 style={{ fontSize: 15, fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.4 }}>{p.title}</h3>
                   <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>
