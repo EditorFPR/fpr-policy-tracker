@@ -71,7 +71,7 @@ const POLICIES = [
     id: 1, title: "TELS Student Debt Forgiveness",
     ministry: "finance", category: "Social Services", status: "Delivered", progress: 100,
     description: "Complete forgiveness of TELS (Tertiary Education Loan Scheme) debt for over 53,000 tertiary students, writing off $650 million in government debt to reduce financial burden on graduates.",
-    commitmentType: "SODELPA Manifesto Promise", year: 2022, updated: "December 2023",
+    commitmentType: "PAP/SODELPA Manifesto Promise", year: 2022, updated: "December 2023",
     milestones: [
       { label: "Cabinet approval for debt write-off", done: true, date: "Mar 2023" },
       { label: "Legal framework established", done: true, date: "Jun 2023" },
@@ -318,7 +318,7 @@ const POLICIES = [
     id: 20, title: "MIDA Repeal & Press Freedom",
     ministry: "information", category: "Governance", status: "Delivered", progress: 100,
     description: "The Coalition Government repealed the Media Industry Development Act (MIDA) 2010 on 6 April 2023 — one of the Pacific's most restrictive media laws, introduced by the Bainimarama military government after the 2006 coup. MIDA gave authorities sweeping powers to investigate journalists, conduct searches and seizures, and force journalists to reveal sources. Its repeal was a key coalition campaign promise and was welcomed by the Fijian Media Association and international press freedom advocates including Reporters Without Borders.",
-    commitmentType: "Coalition Manifesto Promise", year: 2022, updated: "April 2023",
+    commitmentType: "PAP Manifesto Promise", year: 2022, updated: "April 2023",
     milestones: [
       { label: "MIDA repeal pledged during 2022 election campaign", done: true, date: "2022" },
       { label: "Bill tabled in Parliament by AG Siromi Turaga", done: true, date: "Apr 2023" },
@@ -374,6 +374,21 @@ const POLICIES = [
     impact: "Tourism fully recovered and surpassed pre-pandemic records. Over one million visitors in 2024 — a Fijian first. National Sustainable Tourism Framework 2024-2034 established. Tourism supports 40% of GDP and 120,000+ jobs.",
   },
   {
+    id: 24, title: "USP Reconciliation & Funding Restoration",
+    ministry: "finance", category: "Governance", status: "Delivered", progress: 100,
+    description: "PAP's manifesto promised to restart all University of the South Pacific grants within 100 days, lift the deportation ban on VC Professor Pal Ahluwalia, and clear Fiji's outstanding debt to USP — which the Bainimarama government had withheld since 2020. The Coalition moved immediately: $10 million was paid within days of taking office, the VC's deportation ban was lifted, and annual grants were fully restored. Over three years the government paid $102 million to USP — $67 million in restored grants and $35 million toward the outstanding debt. As of November 2025 some outstanding debt remains, making this a substantial but partial delivery on the full debt clearance promise.",
+    commitmentType: "PAP Manifesto Promise", year: 2022, updated: "May 2026",
+    milestones: [
+      { label: "USP VC deportation ban lifted", done: true, date: "Dec 2022" },
+      { label: "$10M paid to USP within first days of government", done: true, date: "Jan 2023" },
+      { label: "Annual grants fully restored ($33.5M/year)", done: true, date: "2023" },
+      { label: "$53.5M allocated in 2023-2024 budget", done: true, date: "Jun 2023" },
+      { label: "$102M total paid over three years", done: true, date: "2025" },
+      { label: "Full outstanding debt cleared", done: false, date: "Ongoing" },
+    ],
+    impact: "$102M paid to USP over three years — $67M in restored grants and $35M toward arrears. VC deportation ban lifted. Annual grants restored. Some outstanding debt remains as of late 2025.",
+  },
+  {
     id: 15, title: "Jerusalem Embassy Establishment",
     ministry: "foreign", category: "Foreign Policy", status: "Delivered", progress: 100,
     description: "SODELPA manifesto commitment to establish Fiji embassy in Jerusalem. Successfully delivered by the Coalition Government.",
@@ -395,18 +410,20 @@ const STATUS_META = {
 };
 
 const PARTY_META = {
-  "PAP":       { label: "PAP",       color: "#1D4ED8", bg: "#DBEAFE" },
-  "NFP":       { label: "NFP",       color: "#166534", bg: "#DCFCE7" },
-  "SODELPA":   { label: "SODELPA",   color: "#92400E", bg: "#FEF3C7" },
-  "Coalition": { label: "Coalition", color: "#5B21B6", bg: "#EDE9FE" },
-  "PAP/NFP":   { label: "PAP/NFP",   color: "#0E7490", bg: "#CFFAFE" },
-  "Government":{ label: "Government",color: "#374151", bg: "#F3F4F6" },
+  "PAP":          { label: "PAP",          color: "#1D4ED8", bg: "#DBEAFE" },
+  "NFP":          { label: "NFP",          color: "#166534", bg: "#DCFCE7" },
+  "SODELPA":      { label: "SODELPA",      color: "#92400E", bg: "#FEF3C7" },
+  "Coalition":    { label: "Coalition",    color: "#5B21B6", bg: "#EDE9FE" },
+  "PAP/NFP":      { label: "PAP/NFP",      color: "#0E7490", bg: "#CFFAFE" },
+  "PAP/SODELPA":  { label: "PAP/SODELPA",  color: "#0E7490", bg: "#CFFAFE" },
+  "Government":   { label: "Government",   color: "#374151", bg: "#F3F4F6" },
 };
 
 const getParty = (commitmentType) => {
   if (!commitmentType) return PARTY_META["Government"];
   const t = commitmentType.toUpperCase();
-  if (t.includes("PAP") && t.includes("NFP")) return PARTY_META["PAP/NFP"];
+  if (t.includes("PAP") && t.includes("NFP"))     return PARTY_META["PAP/NFP"];
+  if (t.includes("PAP") && t.includes("SODELPA")) return PARTY_META["PAP/SODELPA"];
   if (t.includes("PAP"))       return PARTY_META["PAP"];
   if (t.includes("NFP"))       return PARTY_META["NFP"];
   if (t.includes("SODELPA"))   return PARTY_META["SODELPA"];
@@ -416,7 +433,7 @@ const getParty = (commitmentType) => {
 
 const CATEGORIES = ["All", "Economy", "Social Services", "Infrastructure", "Governance", "Foreign Policy", "Climate", "Symbolic Reconciliation"];
 const STATUSES   = ["All", "Delivered", "In Progress", "Under Review", "Delayed", "Not Started"];
-const PARTIES    = ["All", "PAP", "NFP", "SODELPA", "Coalition", "PAP/NFP", "Government"];
+const PARTIES    = ["All", "PAP", "NFP", "SODELPA", "Coalition", "PAP/NFP", "PAP/SODELPA", "Government"];
 
 // ─── COMPONENTS (same as original, just using updated data) ──────────────────────────────────────
 
