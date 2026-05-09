@@ -358,6 +358,8 @@ const PartyBadge = ({ commitmentType }) => {
     </span>
   );
 };
+
+const ProgressBar = ({ value, status }) => {
   const colors = { "Delivered": "#16A34A", "In Progress": "#2563EB", "Delayed": "#DC2626", "Under Review": "#7C3AED", "Not Started": "#D1D5DB" };
   return (
     <div style={{ height: 6, background: "#E5E7EB", borderRadius: 3, overflow: "hidden" }}>
