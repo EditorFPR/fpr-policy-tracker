@@ -49,8 +49,6 @@
 <div id="root"></div>
 <script type="text/babel">
 
-// ─── REAL DATA FROM FPR RESEARCH ──────────────────────────────────────────
-
 const MINISTRIES = [
   { id: "finance", name: "PM's Office (Finance)", minister: "Sitiveni Rabuka (Acting)", color: "#2c3549", note: "Biman Prasad resigned Oct 2025" },
   { id: "education", name: "Ministry of Education", minister: "Aseri Radrodro", color: "#0369A1" },
@@ -82,8 +80,8 @@ const POLICIES = [
   },
   {
     id: 2, title: "Constitutional Reform Process",
-    ministry: "justice", category: "Governance", status: "In Progress", progress: 50,
-    description: "Comprehensive review of the 2013 Constitution to address democratic deficits. Amendment Bill to reduce amendment threshold from 75% to 66% was defeated by one vote in March 2025. The National Referendum Bill 2025 — establishing Fiji's first constitutional referendum framework — was introduced in December 2025 and referred to the Standing Committee on Justice, Law and Human Rights. The Bill has attracted significant controversy, with civil society, legal experts, and former AG Sayed-Khaiyum calling it 'draconian' for restricting public campaigning during a referendum.",
+    ministry: "justice", category: "Governance", status: "In Progress", progress: 60,
+    description: "Comprehensive review of the 2013 Constitution to address democratic deficits. Amendment Bill to reduce amendment threshold from 75% to 66% was defeated by one vote in March 2025. The National Referendum Bill 2025 — establishing Fiji's first constitutional referendum framework — was introduced in December 2025 and referred to the Standing Committee on Justice, Law and Human Rights. The Bill has attracted significant controversy, with civil society, legal experts, and former AG Sayed-Khaiyum calling it 'draconian' for restricting public campaigning during a referendum. The Constitutional Review Commission is expected to deliver its report to the President by 31 August 2026.",
     commitmentType: "Coalition Manifesto Promise", year: 2022, updated: "May 2026",
     milestones: [
       { label: "Supreme Court advisory opinion sought", done: true, date: "2024" },
@@ -96,19 +94,19 @@ const POLICIES = [
       { label: "Standing Committee report to Parliament", done: false, date: "Mid 2026" },
       { label: "Constitutional referendum", done: false, date: "2026-2027" },
     ],
-    impact: "Referendum Bill before Parliament after committee review. Significant civil society and legal opposition to campaigning restrictions in the Bill. General election due August 2026–February 2027.",
+    impact: "Referendum Bill before Parliament after committee review. Significant civil society and legal opposition to campaigning restrictions in the Bill. CRC reports 31 August 2026. General election due August 2026–February 2027.",
   },
   {
-    id: 3, title: "VAT Increase (9% to 15%)",
+    id: 3, title: "VAT Increase (9% to 15%, revised to 12.5%)",
     ministry: "finance", category: "Economy", status: "Delivered", progress: 100,
-    description: "Controversial increase in Value Added Tax from 9% to 15% in 2023 to address fiscal deficit. Opposition argues it disproportionately hurts low and middle-income families.",
-    commitmentType: "Government Fiscal Policy", year: 2023, updated: "January 2023",
+    description: "Controversial increase in Value Added Tax from 9% to 15% in 2023 to address fiscal deficit, subsequently revised down to 12.5% following public pressure. The rate currently stands at 12.5%. Opposition argues it disproportionately hurts low and middle-income families.",
+    commitmentType: "Government Fiscal Policy", year: 2023, updated: "May 2026",
     milestones: [
       { label: "Budget announcement", done: true, date: "Dec 2022" },
       { label: "Parliamentary approval", done: true, date: "Jan 2023" },
       { label: "VAT implementation (9% → 15%)", done: true, date: "Jan 2023" },
     ],
-    impact: "Government revenue increased. Opposition cites increased cost of living for families.",
+    impact: "Government revenue increased. VAT subsequently revised from 15% to 12.5%. Opposition cites increased cost of living for families.",
   },
   {
     id: 4, title: "Civil Servant Pay Rises",
@@ -172,16 +170,19 @@ const POLICIES = [
   },
   {
     id: 9, title: "National Rural Development Policy",
-    ministry: "foreign", category: "Infrastructure", status: "In Progress", progress: 65,
-    description: "First rural development policy in decades under Minister Ditoka, with $1.5M UNDP partnership for risk-informed community infrastructure across 87 projects.",
-    commitmentType: "Government Policy Initiative", year: 2024, updated: "January 2026",
+    ministry: "foreign", category: "Infrastructure", status: "In Progress", progress: 70,
+    description: "First rural development policy in decades under Minister Ditoka, with $1.5M UNDP partnership for risk-informed community infrastructure across 87 projects. The Fiji Roads Authority deployed $371 million in 2025 capital works, sealing 12.5km in Suva including Princess Road while advancing outer island upgrades on Lakeba, Moala, and Rotuma. Japan's $70 million grant funds the Tamavua-i-wai Bridge, now in alignment phase. The $30M Vutia road and bridge project started construction in May 2026. 15 new crossings are being tendered by August 2026.",
+    commitmentType: "Government Policy Initiative", year: 2024, updated: "May 2026",
     milestones: [
       { label: "UNDP Strategic Partnership ($1.5M)", done: true, date: "May 2024" },
       { label: "87 risk-informed projects designed", done: true, date: "2024-2025" },
       { label: "NRDP consultation began", done: true, date: "Jan 2026" },
+      { label: "$371M FRA capital works deployed in 2025", done: true, date: "2025" },
+      { label: "Japan $70M Tamavua-i-wai Bridge — alignment phase", done: true, date: "2026" },
+      { label: "$30M Vutia road and bridge construction starts", done: true, date: "May 2026" },
       { label: "National policy implementation", done: false, date: "2026-2027" },
     ],
-    impact: "87 projects worth $1.6M benefiting 15,000+ people across 80 communities. First rural policy in decades.",
+    impact: "87 projects worth $1.6M benefiting 15,000+ people across 80 communities. $371M FRA capital works 2025. Japan-funded Tamavua-i-wai Bridge in progress. Vutia road construction started May 2026.",
   },
   {
     id: 10, title: "Truth and Reconciliation Commission",
@@ -204,41 +205,41 @@ const POLICIES = [
   {
     id: 11, title: "Ministerial Salary Cuts (1/3 reduction)",
     ministry: "finance", category: "Governance", status: "Delivered", progress: 100,
-    description: "Cabinet approved a 33% reduction in ministerial salaries in early 2024, taking effect immediately. The pay cut applies to the Prime Minister, Deputy Prime Minister(s), Cabinet Ministers, and Assistant Ministers. The government framed it as a measure to reduce fiscal pressure, demonstrate leadership during economic recovery, and respond to public concern about the cost of governance.",
+    description: "Cabinet approved a 33% reduction in ministerial salaries in early 2024, taking effect immediately. The pay cut applies to the Prime Minister, Deputy Prime Minister(s), Cabinet Ministers, and Assistant Ministers. In April 2026, Parliament also voted unanimously for a further 20% pay cut for all 55 MPs in response to the fuel crisis.",
     commitmentType: "NFP Manifesto Promise", year: 2022, updated: "May 2026",
     milestones: [
       { label: "Promise made during 2022 campaign", done: true, date: "2022" },
       { label: "Cabinet approval for 33% pay cut", done: true, date: "Early 2024" },
       { label: "Pay cut takes effect for all ministers", done: true, date: "Early 2024" },
     ],
-    impact: "33% ministerial salary reduction implemented. Applies to PM, DPM, Cabinet Ministers, and Assistant Ministers. Civil servants and statutory bodies not affected.",
+    impact: "33% ministerial salary reduction implemented. A further 20% pay cut voted unanimously by all 55 MPs on 30 April 2026 in response to fuel crisis.",
   },
   {
     id: 12, title: "FICAC Removal/Phase-Out",
     ministry: "justice", category: "Governance", status: "Not Started", progress: 0,
-    description: "PAP manifesto promise to remove or phase out the Fiji Independent Commission Against Corruption. FICAC remains active and has charged Coalition ministers.",
-    commitmentType: "PAP Manifesto Promise", year: 2022, updated: "2025",
+    description: "PAP manifesto promise to remove or phase out the Fiji Independent Commission Against Corruption. FICAC remains fully active. In 2025 FICAC charged two coalition ministers — Deputy PM Biman Prasad (corruption-related offences, resigned Cabinet October 2025) and Deputy PM Manoa Kamikamica (perjury and providing false information). The government has not taken any steps to implement this promise.",
+    commitmentType: "PAP Manifesto Promise", year: 2022, updated: "May 2026",
     delayReason: "Policy abandoned. FICAC remains active and has ironically charged Coalition ministers Prasad and Kamikamica in 2025.",
     milestones: [
       { label: "Promise made during campaign", done: true, date: "2022" },
       { label: "Policy implementation", done: false, date: "Abandoned" },
     ],
-    impact: "BROKEN PROMISE: FICAC still operating. Prasad and Kamikamica charged by FICAC in October 2025.",
+    impact: "BROKEN PROMISE: FICAC still operating. Prasad charged by FICAC — resigned Cabinet October 2025. Kamikamica charged by FICAC October 2025.",
   },
   {
     id: 13, title: "Local Government Elections (100 days)",
-    ministry: "justice", category: "Governance", status: "In Progress", progress: 50,
-    description: "PAP manifesto commitment to restore local government elections within first 100 days. Elections were not delivered in the first 100 days or in the three years following. However, local government elections have now been scheduled for September 2026 — the first since 2005. Cabinet approved the September 2026 date and $1 million was allocated in the national budget. A civic education campaign began in early 2026.",
+    ministry: "justice", category: "Governance", status: "Delayed", progress: 50,
+    description: "PAP manifesto commitment to restore local government elections within first 100 days. Elections were not delivered in the first 100 days or in the three years following. Local government elections were scheduled for September 2026 — the first since 2005. Cabinet approved the date and $1 million was allocated in the national budget. Voter registration opened 13 April 2026. A civic education campaign and nationwide FEO outreach programme began in early 2026. However, on 18 May 2026, Prime Minister Rabuka signalled the September elections may not proceed, citing the fuel crisis, budget constraints, constitutional review priorities, and national election preparations. No formal decision has been announced but the commitment is now in serious doubt. The FEO has been preparing operationally since December 2025 — 72 polling venues planned, election officials recruited, combined voter cards prepared.",
     commitmentType: "PAP Manifesto Promise", year: 2022, updated: "May 2026",
-    delayReason: "100-day promise not kept. Elections repeatedly deferred from 2023 through 2025 before finally being scheduled for September 2026.",
+    delayReason: "100-day promise not kept. Elections repeatedly deferred from 2023 through 2025. Scheduled for September 2026 but PM Rabuka signalled on 18 May 2026 that even this date may slip, citing fuel crisis, budget constraints and constitutional review.",
     milestones: [
       { label: "100-day deadline passed without elections", done: true, date: "Apr 2023" },
       { label: "$1M allocated in national budget for local elections", done: true, date: "2025" },
       { label: "September 2026 date confirmed by Cabinet", done: true, date: "Dec 2025" },
-      { label: "Civic education campaign commenced", done: true, date: "Early 2026" },
-      { label: "Local government elections held", done: false, date: "Sep 2026" },
+      { label: "Civic education campaign and FEO voter registration commenced", done: true, date: "Apr 2026" },
+      { label: "Local government elections held", done: false, date: "Sep 2026 — at risk" },
     ],
-    impact: "Elections now scheduled for September 2026 — the first local polls since 2005. 141 councillors to be elected across 13 municipalities. Significantly delayed from original 100-day promise but now active.",
+    impact: "Elections scheduled for September 2026 — the first local polls since 2005. 141 councillors to be elected across 13 municipalities. Significantly delayed from original 100-day promise. PM Rabuka signalled 18 May 2026 elections may be further postponed.",
   },
   {
     id: 14, title: "Great Council of Chiefs Restoration",
@@ -253,20 +254,21 @@ const POLICIES = [
   },
   {
     id: 16, title: "CWM Hospital Redevelopment & National Hospital Plan",
-    ministry: "health", category: "Infrastructure", status: "In Progress", progress: 35,
-    description: "The Coalition Government has committed to a major overhaul of Fiji's health infrastructure, centred on the redevelopment of Colonial War Memorial (CWM) Hospital and the planning of a new national referral hospital. Australia signed a $14.7M funding agreement in March 2024 for a comprehensive infrastructure masterplan. Phase 1 upgrades ($6.7M) are underway, with Phase 2 ($7.8M) in planning. A new national hospital is projected to open by 2035, with seven sites under investigation.",
+    ministry: "health", category: "Infrastructure", status: "In Progress", progress: 40,
+    description: "The Coalition Government has committed to a major overhaul of Fiji's health infrastructure, centred on the redevelopment of Colonial War Memorial (CWM) Hospital and the planning of a new national referral hospital. Australia signed a $14.7M funding agreement in March 2024 for a comprehensive infrastructure masterplan. Phase 1 upgrades ($6.7M) are underway, with Phase 2 ($7.8M) in planning. Essential infrastructure upgrades have begun at CWM as of May 2026. A new national hospital is projected to open by 2035, with seven sites under investigation. Note: FBC News has reported a $500M upgrade announcement — the FPR is seeking to verify this figure.",
     commitmentType: "Coalition Government Policy", year: 2024, updated: "May 2026",
     milestones: [
       { label: "Australia-Fiji $14.7M masterplan funding agreement signed", done: true, date: "Mar 2024" },
       { label: "CWM infrastructure assessment completed", done: true, date: "Sep 2024" },
       { label: "Phase 1 upgrades commenced ($6.7M — roofing, wards, St Giles)", done: true, date: "Jan 2025" },
       { label: "Phase 2 planning underway ($7.8M)", done: true, date: "2025–2026" },
+      { label: "Essential infrastructure upgrade begins at CWM", done: true, date: "May 2026" },
       { label: "New hospital site selected from 7 candidates", done: false, date: "2026" },
       { label: "Masterplan finalised", done: false, date: "2026" },
       { label: "New national hospital construction begins", done: false, date: "TBC" },
       { label: "New national hospital opens", done: false, date: "~2035" },
     ],
-    impact: "Phase 1 CWM and St Giles upgrades underway. New 700-bed national hospital planned to serve Fiji and the wider Pacific. Seven potential sites under investigation. Projected completion by 2035.",
+    impact: "Phase 1 and essential infrastructure upgrades underway at CWM. New 700-bed national hospital planned. Seven potential sites under investigation. Projected completion by 2035.",
   },
   {
     id: 17, title: "Education Reform (Education Bill 2025)",
@@ -283,12 +285,12 @@ const POLICIES = [
       { label: "Education Bill passed into law", done: false, date: "2026" },
       { label: "Education Sector Strategic Plan 2026–2036 implemented", done: false, date: "2026–2036" },
     ],
-    impact: "Education Bill 2025 before Standing Committee. Replaces 60-year-old Education Act 1966. Establishes National Curriculum and Assessment Authority, bans corporal punishment, guarantees free primary education, and integrates digital literacy and climate change into national curriculum.",
+    impact: "Education Bill 2025 before Standing Committee. Replaces 60-year-old Education Act 1966. Establishes National Curriculum and Assessment Authority, bans corporal punishment, guarantees free primary education.",
   },
   {
     id: 18, title: "Foreign Policy White Paper 2024",
     ministry: "foreign", category: "Foreign Policy", status: "Delivered", progress: 100,
-    description: "Fiji's first-ever Foreign Policy White Paper, mandated by PM Rabuka in early 2024 and launched on 23 September 2024. Developed through a six-month whole-of-government consultative process with input from ministries, the private sector, academics, traditional leaders, and regional organisations. The paper sets out a 10-year roadmap (2024–2034) built on three pillars: sovereignty, security, and prosperity. It introduces the 'Ocean of Peace' concept as Fiji's signature contribution to Indo-Pacific security and positions Australia and New Zealand as Fiji's primary bilateral partners.",
+    description: "Fiji's first-ever Foreign Policy White Paper, mandated by PM Rabuka in early 2024 and launched on 23 September 2024. The paper sets out a 10-year roadmap (2024–2034) built on three pillars: sovereignty, security, and prosperity. It introduces the 'Ocean of Peace' concept as Fiji's signature contribution to Indo-Pacific security and positions Australia and New Zealand as Fiji's primary bilateral partners.",
     commitmentType: "Coalition Government Policy", year: 2024, updated: "September 2024",
     milestones: [
       { label: "PM Rabuka mandates development of White Paper", done: true, date: "Early 2024" },
@@ -302,8 +304,8 @@ const POLICIES = [
   {
     id: 19, title: "Western Realignment & China Policy Reset",
     ministry: "defence", category: "Foreign Policy", status: "Delivered", progress: 100,
-    description: "The Coalition Government reversed the Bainimarama era's 'Look North' China policy, pivoting back toward traditional partners Australia, New Zealand, and the United States. Key actions included terminating the 2011 China-Fiji police MOU in January 2023, reinstating the Taiwanese mission's official name in March 2023, and deepening the Vuvale Partnership with Australia. After a 13-month review, the policing relationship with China was partially restored in March 2024 — but with the firm condition that no Chinese police would be embedded with the Fiji Police Force, as they had been from 2012 to 2022.",
-    commitmentType: "Coalition Government Policy", year: 2023, updated: "March 2024",
+    description: "The Coalition Government reversed the Bainimarama era's 'Look North' China policy, pivoting back toward traditional partners Australia, New Zealand, and the United States. Key actions included terminating the 2011 China-Fiji police MOU in January 2023, reinstating the Taiwanese mission's official name in March 2023, and deepening the Vuvale Partnership with Australia. After a 13-month review, the policing relationship with China was partially restored in March 2024 — but with the firm condition that no Chinese police would be embedded with the Fiji Police Force. The Vuvale Union — a treaty-level framework with Australia covering security, economic cooperation and people-to-people ties — was approved by Cabinet on 8 May 2026.",
+    commitmentType: "Coalition Government Policy", year: 2023, updated: "May 2026",
     milestones: [
       { label: "China police MOU terminated", done: true, date: "26 Jan 2023" },
       { label: "DPM Gavoka meets Taiwan representative publicly", done: true, date: "Jan 2023" },
@@ -311,13 +313,14 @@ const POLICIES = [
       { label: "Vuvale Partnership with Australia deepened", done: true, date: "2023" },
       { label: "13-month review of China policing relationship", done: true, date: "2023–2024" },
       { label: "China policing relationship partially restored — no embedded officers", done: true, date: "Mar 2024" },
+      { label: "Vuvale Union framework approved by Cabinet", done: true, date: "8 May 2026" },
     ],
-    impact: "Decisive pivot away from Bainimarama's 'Look North' China policy. Chinese police no longer embedded in Fiji Police Force. Taiwan mission formally reinstated. Vuvale Partnership with Australia significantly strengthened.",
+    impact: "Decisive pivot away from Bainimarama's 'Look North' China policy. Chinese police no longer embedded in Fiji Police Force. Taiwan mission formally reinstated. Vuvale Union framework approved by Cabinet 8 May 2026 — Parliament has not yet approved it.",
   },
   {
     id: 20, title: "MIDA Repeal & Press Freedom",
     ministry: "information", category: "Governance", status: "Delivered", progress: 100,
-    description: "The Coalition Government repealed the Media Industry Development Act (MIDA) 2010 on 6 April 2023 — one of the Pacific's most restrictive media laws, introduced by the Bainimarama military government after the 2006 coup. MIDA gave authorities sweeping powers to investigate journalists, conduct searches and seizures, and force journalists to reveal sources. Its repeal was a key coalition campaign promise and was welcomed by the Fijian Media Association and international press freedom advocates including Reporters Without Borders.",
+    description: "The Coalition Government repealed the Media Industry Development Act (MIDA) 2010 on 6 April 2023 — one of the Pacific's most restrictive media laws, introduced by the Bainimarama military government after the 2006 coup. Its repeal was welcomed by the Fijian Media Association and international press freedom advocates. Fiji rose 17 places on the RSF Press Freedom Index following the repeal.",
     commitmentType: "PAP Manifesto Promise", year: 2022, updated: "April 2023",
     milestones: [
       { label: "MIDA repeal pledged during 2022 election campaign", done: true, date: "2022" },
@@ -325,12 +328,12 @@ const POLICIES = [
       { label: "Parliament votes 29-21 to repeal MIDA", done: true, date: "6 Apr 2023" },
       { label: "MIDA formally repealed — press freedom restored", done: true, date: "6 Apr 2023" },
     ],
-    impact: "MIDA repealed after 13 years. Fiji's media no longer subject to government-controlled authority with powers of search, seizure, and forced source disclosure. Welcomed by the Fijian Media Association and international press freedom organisations.",
+    impact: "MIDA repealed after 13 years. Fiji rose 17 places on RSF Press Freedom Index. Welcomed by the Fijian Media Association and international press freedom organisations.",
   },
   {
     id: 21, title: "Climate Action & NDC 3.0",
-    ministry: "information", category: "Climate", status: "In Progress", progress: 55,
-    description: "The Coalition Government has advanced Fiji's climate commitments through the National Energy Policy 2023-2030, submission of Fiji's third Nationally Determined Contribution (NDC 3.0) to the UNFCCC in November 2025, and the launch of the Ministry of Environment and Climate Change Strategic Development Plan 2026-2031. NDC 3.0 commits Fiji to a 36% reduction in energy sector greenhouse gas emissions below business-as-usual by 2035 and 100% renewable electricity generation by 2035. Energy Fiji Limited targets 90% renewable power by 2025 and 99% by 2030.",
+    ministry: "information", category: "Climate", status: "In Progress", progress: 70,
+    description: "The Coalition Government has advanced Fiji's climate commitments through the National Energy Policy 2023-2030, submission of NDC 3.0 to the UNFCCC in November 2025, and the Ministry Strategic Development Plan 2026-2031. NDC 3.0 commits Fiji to a 36% reduction in energy sector emissions by 2035, planting 30 million trees, and designating 30% of Fiji's EEZ as marine protected areas. On 4 May 2026, Fiji launched the NDC 3.0 Costed Implementation Plan workshop in Suva. Permanent Secretary Sivendra Michael warned the world is nearing a dangerous climate tipping point. A USD $5.7 million five-year Adaptation Fund project for 14 vulnerable coastal communities was also launched on 4-5 May 2026.",
     commitmentType: "Coalition Government Policy", year: 2023, updated: "May 2026",
     milestones: [
       { label: "National Energy Policy 2023-2030 established", done: true, date: "2023" },
@@ -338,15 +341,20 @@ const POLICIES = [
       { label: "NDC 3.0 national consultations conducted", done: true, date: "2024-2025" },
       { label: "NDC 3.0 submitted to UNFCCC", done: true, date: "Nov 2025" },
       { label: "Ministry Strategic Development Plan 2026-2031 launched", done: true, date: "May 2026" },
+      { label: "NDC 3.0 Costed Implementation Plan workshop held", done: true, date: "4 May 2026" },
+      { label: "$5.7M Adaptation Fund coastal project launched — 14 communities", done: true, date: "4-5 May 2026" },
+      { label: "Divisional stakeholder consultations for NDC 3.0", done: true, date: "May 2026" },
+      { label: "30 million trees planted", done: false, date: "2026-2031" },
+      { label: "30% EEZ designated as marine protected areas", done: false, date: "2030" },
       { label: "100% renewable electricity target achieved", done: false, date: "2035" },
       { label: "36% GHG emissions reduction target achieved", done: false, date: "2035" },
     ],
-    impact: "NDC 3.0 submitted committing to 100% renewable electricity and 36% GHG reduction by 2035. National Energy Policy and Ministry Strategic Plan 2026-2031 in place. Digital climate transparency platform operational.",
+    impact: "NDC 3.0 submitted Nov 2025. Costed Implementation Plan workshop held 4 May 2026. $5.7M Adaptation Fund project for 14 coastal communities launched. Targets: 100% renewable electricity, 36% GHG reduction, 30M trees, 30% EEZ protected by 2035.",
   },
   {
     id: 22, title: "Bill 17 Repeal — iTaukei Land Rights",
     ministry: "lands", category: "Governance", status: "Delivered", progress: 100,
-    description: "On 6 April 2023, Parliament repealed the iTaukei Land Trust (Budget Amendment) Act 2021 — widely known as 'Bill 17' — which the Bainimarama government had passed without consultation with iTaukei landowners. Bill 17 had removed the requirement for the iTaukei Land Trust Board (TLTB) to give consent before leased iTaukei land could be mortgaged, charged, pledged, or subject to a caveat. Its repeal restored full TLTB oversight and was celebrated as a major victory for iTaukei land rights. Minister Vosarogo is also progressing the return of 17 idle state land parcels to their original iTaukei owners.",
+    description: "On 6 April 2023, Parliament repealed the iTaukei Land Trust (Budget Amendment) Act 2021 — widely known as 'Bill 17' — which the Bainimarama government had passed without consultation with iTaukei landowners. Its repeal restored full TLTB oversight and was celebrated as a major victory for iTaukei land rights.",
     commitmentType: "Coalition Manifesto Promise", year: 2022, updated: "January 2026",
     milestones: [
       { label: "Bill 17 repeal pledged during 2022 campaign", done: true, date: "2022" },
@@ -355,12 +363,12 @@ const POLICIES = [
       { label: "17 idle state land parcels under review for return to iTaukei owners", done: true, date: "Jan 2026" },
       { label: "National land use policy in development", done: false, date: "Ongoing" },
     ],
-    impact: "Bill 17 repealed on the same day as MIDA — 6 April 2023. iTaukei Land Trust Board consent requirements restored. 17 parcels of idle state land under active review for return to original landowners.",
+    impact: "Bill 17 repealed on 6 April 2023. iTaukei Land Trust Board consent requirements restored. 17 parcels of idle state land under active review for return to original landowners.",
   },
   {
     id: 23, title: "National Sustainable Tourism Framework & Recovery",
     ministry: "tourism", category: "Economy", status: "Delivered", progress: 100,
-    description: "Under Deputy PM Gavoka, the coalition oversaw Fiji's full tourism recovery from the COVID-19 pandemic and launched the National Sustainable Tourism Framework 2024-2034. Visitor arrivals grew from 636,312 in 2022 to 929,740 in 2023, surpassing pre-pandemic records, and exceeded one million in 2024 — a historic first for Fiji. Key milestones include the inaugural Nadi-Dallas direct flight, the first NRL match held in Fiji, and the first Civil Aviation Master Plan. Tourism contributes approximately 40% of GDP and supports over 120,000 jobs.",
+    description: "Under Deputy PM Gavoka, the coalition oversaw Fiji's full tourism recovery and launched the National Sustainable Tourism Framework 2024-2034. Visitor arrivals exceeded one million in 2024 — a historic first for Fiji. Tourism contributes approximately 40% of GDP and supports over 120,000 jobs.",
     commitmentType: "Coalition Government Policy", year: 2023, updated: "May 2026",
     milestones: [
       { label: "Tourism recovery plan implemented", done: true, date: "2023" },
@@ -371,12 +379,12 @@ const POLICIES = [
       { label: "One million visitors — historic first for Fiji", done: true, date: "2024" },
       { label: "986,367 visitors in 2025 — second million-visitor milestone", done: true, date: "Dec 2025" },
     ],
-    impact: "Tourism fully recovered and surpassed pre-pandemic records. Over one million visitors in 2024 — a Fijian first. National Sustainable Tourism Framework 2024-2034 established. Tourism supports 40% of GDP and 120,000+ jobs.",
+    impact: "Tourism fully recovered and surpassed pre-pandemic records. Over one million visitors in 2024 — a Fijian first. Tourism supports 40% of GDP and 120,000+ jobs.",
   },
   {
     id: 24, title: "USP Reconciliation & Funding Restoration",
     ministry: "finance", category: "Governance", status: "Delivered", progress: 100,
-    description: "PAP's manifesto promised to restart all University of the South Pacific grants within 100 days, lift the deportation ban on VC Professor Pal Ahluwalia, and clear Fiji's outstanding debt to USP — which the Bainimarama government had withheld since 2020. The Coalition moved immediately: $10 million was paid within days of taking office, the VC's deportation ban was lifted, and annual grants were fully restored. Over three years the government paid $102 million to USP — $67 million in restored grants and $35 million toward the outstanding debt. As of November 2025 some outstanding debt remains, making this a substantial but partial delivery on the full debt clearance promise.",
+    description: "PAP's manifesto promised to restart all University of the South Pacific grants within 100 days, lift the deportation ban on VC Professor Pal Ahluwalia, and clear Fiji's outstanding debt to USP. Over three years the government paid $102 million to USP — $67 million in restored grants and $35 million toward the outstanding debt. As of November 2025 some outstanding debt remains.",
     commitmentType: "PAP Manifesto Promise", year: 2022, updated: "May 2026",
     milestones: [
       { label: "USP VC deportation ban lifted", done: true, date: "Dec 2022" },
@@ -398,6 +406,37 @@ const POLICIES = [
       { label: "Jerusalem embassy established", done: true, date: "2025" },
     ],
     impact: "Fiji embassy in Jerusalem successfully established as promised.",
+  },
+  {
+    id: 25, title: "Fuel Crisis Response Package ($56M)",
+    ministry: "finance", category: "Economy", status: "In Progress", progress: 65,
+    description: "On 21 April 2026, Cabinet approved the redeployment of $56 million within the existing 2025–2026 budget to respond to the global fuel crisis caused by Middle East conflict and disruptions to the Strait of Hormuz. The package includes: $28 million sugar cane price top-up for the 2025 crop season; $4 million to support bus operators (April–July); fuel rebates to Energy Fiji Limited for four months; and a 50% temporary top-up for all social welfare recipients for three months (May–July), costing approximately $24 million. All funds redeployed from budget savings — no new borrowing. Parliament voted unanimously on 30 April for a 20% pay cut for all 55 MPs. Fiji has also secured US$200 million in concessional financing to support its fuel crisis response.",
+    commitmentType: "Government Emergency Response", year: 2026, updated: "May 2026",
+    milestones: [
+      { label: "Fuel crisis declared — Phase 1 (Preparedness)", done: true, date: "Apr 2026" },
+      { label: "Cabinet approves $56M redeployment", done: true, date: "21 Apr 2026" },
+      { label: "Parliament votes 20% MP pay cut unanimously", done: true, date: "30 Apr 2026" },
+      { label: "50% welfare top-up begins (May–July)", done: true, date: "1 May 2026" },
+      { label: "Bus operator and EFL fuel rebates active", done: true, date: "Apr–Jul 2026" },
+      { label: "US$200M concessional financing secured", done: true, date: "May 2026" },
+      { label: "$28M cane price top-up disbursed", done: false, date: "2026 crop season" },
+      { label: "Relief package review and extension decision", done: false, date: "Jul 2026" },
+    ],
+    impact: "$56M emergency package plus US$200M concessional financing secured. $28M cane, $24M welfare top-up, $4M bus subsidies. All 55 MPs took 20% pay cut.",
+  },
+  {
+    id: 26, title: "Employment Relations Amendment Bill",
+    ministry: "finance", category: "Economy", status: "In Progress", progress: 20,
+    description: "Rabuka confirmed at the 51st Biennial Delegates Conference of the Fiji Trades Union Congress on 10 May 2026 that the Employment Relations Amendment Bill will be tabled at the next sitting of Parliament. The Bill is intended to overhaul Fiji's labour framework, strengthen workers' rights, align Fiji with international labour standards, and restore tripartite cooperation between government, workers and employers. This commitment was made during the 2022 election campaign and has been repeatedly delayed. The next Parliament sitting is scheduled for 25–28 May 2026.",
+    commitmentType: "Coalition Election Promise", year: 2022, updated: "May 2026",
+    milestones: [
+      { label: "Promise made during 2022 election campaign", done: true, date: "2022" },
+      { label: "Employment Relations Advisory Board restored", done: true, date: "2023" },
+      { label: "Bill confirmed for next Parliament sitting", done: false, date: "25-28 May 2026" },
+      { label: "Employment Relations Amendment Bill tabled", done: false, date: "May 2026" },
+      { label: "Bill passed into law", done: false, date: "2026" },
+    ],
+    impact: "Bill not yet tabled. Rabuka confirmed 10 May 2026 it will be tabled at the next Parliament sitting.",
   }
 ];
 
@@ -434,8 +473,6 @@ const getParty = (commitmentType) => {
 const CATEGORIES = ["All", "Economy", "Social Services", "Infrastructure", "Governance", "Foreign Policy", "Climate", "Symbolic Reconciliation"];
 const STATUSES   = ["All", "Delivered", "In Progress", "Under Review", "Delayed", "Not Started"];
 const PARTIES    = ["All", "PAP", "NFP", "SODELPA", "Coalition", "PAP/NFP", "PAP/SODELPA", "Government"];
-
-// ─── COMPONENTS (same as original, just using updated data) ──────────────────────────────────────
 
 const Badge = ({ status }) => {
   const m = STATUS_META[status] || STATUS_META["Not Started"];
@@ -481,28 +518,17 @@ const StatCard = ({ value, label, sub, color }) => (
   </div>
 );
 
-// ... (keeping all other component code the same as original, with updated FPR branding)
-
 const PolicyDetail = ({ policy, ministries, onClose }) => {
   const ministry = ministries.find(m => m.id === policy.ministry);
   const done = policy.milestones.filter(m => m.done).length;
   return (
-    <div style={{
-      position: "fixed", inset: 0, zIndex: 200,
-      display: "flex", justifyContent: "flex-end",
-    }}>
+    <div style={{ position: "fixed", inset: 0, zIndex: 200, display: "flex", justifyContent: "flex-end" }}>
       <div onClick={onClose} style={{ flex: 1, background: "rgba(0,0,0,0.4)", cursor: "pointer" }} />
-      <div style={{
-        width: "min(560px, 100vw)", background: "#fff", overflowY: "auto",
-        display: "flex", flexDirection: "column", boxShadow: "-4px 0 32px rgba(0,0,0,0.15)",
-        animation: "slideIn 0.25s ease",
-      }}>
+      <div style={{ width: "min(560px, 100vw)", background: "#fff", overflowY: "auto", display: "flex", flexDirection: "column", boxShadow: "-4px 0 32px rgba(0,0,0,0.15)", animation: "slideIn 0.25s ease" }}>
         <div style={{ background: "var(--navy)", padding: "28px 28px 24px", color: "#fff" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 600, opacity: 0.7, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
-                {policy.commitmentType} · {policy.category}
-              </div>
+              <div style={{ fontSize: 11, fontWeight: 600, opacity: 0.7, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>{policy.commitmentType} · {policy.category}</div>
               <h2 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 20, lineHeight: 1.3, fontWeight: 700 }}>{policy.title}</h2>
               <div style={{ marginTop: 12, fontSize: 13, opacity: 0.8 }}>{ministry?.name}</div>
             </div>
@@ -514,18 +540,14 @@ const PolicyDetail = ({ policy, ministries, onClose }) => {
             <span style={{ fontSize: 13, opacity: 0.8 }}>Updated {policy.updated}</span>
           </div>
         </div>
-
         <div style={{ padding: "20px 28px", borderBottom: "1px solid var(--border)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
             <span style={{ fontSize: 13, fontWeight: 600 }}>Overall Progress</span>
             <span style={{ fontSize: 13, fontWeight: 700, color: "var(--navy)" }}>{policy.progress}%</span>
           </div>
           <ProgressBar value={policy.progress} status={policy.status} />
-          <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 8 }}>
-            {done} of {policy.milestones.length} milestones completed
-          </div>
+          <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 8 }}>{done} of {policy.milestones.length} milestones completed</div>
         </div>
-
         <div style={{ padding: "20px 28px", borderBottom: "1px solid var(--border)" }}>
           <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)", textWrap: "pretty" }}>{policy.description}</p>
           {policy.delayReason && (
@@ -534,24 +556,16 @@ const PolicyDetail = ({ policy, ministries, onClose }) => {
             </div>
           )}
         </div>
-
         <div style={{ padding: "20px 28px", borderBottom: "1px solid var(--border)" }}>
           <h3 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 16 }}>Milestones</h3>
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {policy.milestones.map((m, i) => (
               <div key={i} style={{ display: "flex", gap: 12, position: "relative" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
-                  <div style={{
-                    width: 20, height: 20, borderRadius: "50%", flexShrink: 0, zIndex: 1,
-                    background: m.done ? "#16A34A" : "#E5E7EB",
-                    border: m.done ? "none" : "2px solid #D1D5DB",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}>
+                  <div style={{ width: 20, height: 20, borderRadius: "50%", flexShrink: 0, zIndex: 1, background: m.done ? "#16A34A" : "#E5E7EB", border: m.done ? "none" : "2px solid #D1D5DB", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     {m.done && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                   </div>
-                  {i < policy.milestones.length - 1 && (
-                    <div style={{ width: 2, flex: 1, minHeight: 16, background: m.done ? "#BBF7D0" : "#E5E7EB", margin: "2px 0" }} />
-                  )}
+                  {i < policy.milestones.length - 1 && <div style={{ width: 2, flex: 1, minHeight: 16, background: m.done ? "#BBF7D0" : "#E5E7EB", margin: "2px 0" }} />}
                 </div>
                 <div style={{ paddingBottom: i < policy.milestones.length - 1 ? 14 : 0, paddingTop: 0 }}>
                   <div style={{ fontSize: 14, fontWeight: m.done ? 500 : 400, color: m.done ? "var(--text-primary)" : "var(--text-secondary)" }}>{m.label}</div>
@@ -561,17 +575,10 @@ const PolicyDetail = ({ policy, ministries, onClose }) => {
             ))}
           </div>
         </div>
-
         {policy.impact && (
           <div style={{ padding: "20px 28px" }}>
             <h3 style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: 10 }}>Reported Impact</h3>
-            <div style={{ 
-              background: policy.impact.includes("BROKEN PROMISE") ? "#FEF2F2" : "#EFF6FF", 
-              border: policy.impact.includes("BROKEN PROMISE") ? "1px solid #FECACA" : "1px solid #BFDBFE", 
-              borderRadius: 8, padding: "12px 16px", fontSize: 14, 
-              color: policy.impact.includes("BROKEN PROMISE") ? "#991B1B" : "#1E40AF", 
-              lineHeight: 1.6 
-            }}>
+            <div style={{ background: policy.impact.includes("BROKEN PROMISE") ? "#FEF2F2" : "#EFF6FF", border: policy.impact.includes("BROKEN PROMISE") ? "1px solid #FECACA" : "1px solid #BFDBFE", borderRadius: 8, padding: "12px 16px", fontSize: 14, color: policy.impact.includes("BROKEN PROMISE") ? "#991B1B" : "#1E40AF", lineHeight: 1.6 }}>
               {policy.impact}
             </div>
           </div>
@@ -601,19 +608,16 @@ const DashboardView = ({ policies, ministries, onSelectPolicy }) => {
       <div style={{ marginBottom: 28 }}>
         <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>Coalition Government Policy Tracker</h1>
         <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>
-          Tracking {total} real commitments by Rabuka's Coalition Government since December 2022. 
-          Based on manifesto promises, parliamentary Hansard, and ministerial statements. 
-          <strong style={{ color: "var(--coral)" }}> Updated May 2026</strong>
+        Tracking {total} real commitments by Rabuka's Coalition Government since December 2022. Based on manifesto promises, parliamentary Hansard, and ministerial statements.
+          <strong style={{ color: "var(--coral)" }}> Updated 18 May 2026</strong>
         </p>
       </div>
-
       <div style={{ display: "flex", gap: 16, marginBottom: 28, flexWrap: "wrap" }}>
         <StatCard value={total} label="Total Tracked" sub="Real manifesto commitments" />
         <StatCard value={`${Math.round((delivered/total)*100)}%`} label="Delivered" sub={`${delivered} of ${total} complete`} color="#16A34A" />
         <StatCard value={inProgress} label="In Progress" sub="Active implementation" color="#2563EB" />
-        <StatCard value={delayed + notStarted} label="Stalled/Broken" sub={`${notStarted} broken promises`} color="#DC2626" />
+        <StatCard value={delayed + notStarted} label="Stalled/Broken" sub={`${delayed + notStarted} stalled or broken`} color="#DC2626" />
       </div>
-
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 24 }}>
         <div style={{ background: "#fff", borderRadius: 12, padding: "24px", border: "1px solid var(--border)" }}>
           <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 20 }}>Progress by Policy Area</h2>
@@ -631,7 +635,6 @@ const DashboardView = ({ policies, ministries, onSelectPolicy }) => {
             ))}
           </div>
         </div>
-
         <div style={{ background: "#fff", borderRadius: 12, padding: "24px", border: "1px solid var(--border)" }}>
           <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 20 }}>Status Overview</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -652,20 +655,15 @@ const DashboardView = ({ policies, ministries, onSelectPolicy }) => {
           </div>
         </div>
       </div>
-
       <div style={{ background: "#fff", borderRadius: 12, padding: "24px", border: "1px solid var(--border)" }}>
         <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 16 }}>Major Policy Achievements</h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
           {recent.map((p, i) => {
             const min = ministries.find(m => m.id === p.ministry);
             return (
-              <div key={p.id} onClick={() => onSelectPolicy(p)} style={{
-                display: "flex", alignItems: "center", gap: 16, padding: "14px 12px", cursor: "pointer",
-                borderRadius: 8, transition: "background 0.15s",
-                borderBottom: i < recent.length - 1 ? "1px solid var(--border)" : "none",
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = "#F8FAFC"}
-              onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+              <div key={p.id} onClick={() => onSelectPolicy(p)} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 12px", cursor: "pointer", borderRadius: 8, transition: "background 0.15s", borderBottom: i < recent.length - 1 ? "1px solid var(--border)" : "none" }}
+                onMouseEnter={e => e.currentTarget.style.background = "#F8FAFC"}
+                onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
                 <div style={{ flex: 3, minWidth: 0 }}>
                   <div style={{ fontSize: 14, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.title}</div>
                   <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>{min?.name}</div>
@@ -708,13 +706,8 @@ const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
         <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>All Policies</h1>
         <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Browse and filter real government commitments with sourced tracking</p>
       </div>
-
       <div style={{ background: "#fff", borderRadius: 12, padding: "16px 20px", border: "1px solid var(--border)", marginBottom: 20, display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-        <input
-          value={search} onChange={e => setSearch(e.target.value)}
-          placeholder="Search policies…"
-          style={{ ...selectStyle, flex: "1 1 200px", outline: "none" }}
-        />
+        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search policies…" style={{ ...selectStyle, flex: "1 1 200px", outline: "none" }} />
         <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={selectStyle}>
           {STATUSES.map(s => <option key={s}>{s}</option>)}
         </select>
@@ -731,7 +724,6 @@ const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
         </select>
         <span style={{ fontSize: 13, color: "var(--text-muted)", whiteSpace: "nowrap" }}>{filtered.length} results</span>
       </div>
-
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {filtered.map(p => {
           const min = ministries.find(m => m.id === p.ministry);
@@ -754,9 +746,7 @@ const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
                   </div>
                 </div>
                 <div style={{ minWidth: 120, flexShrink: 0 }}>
-                  <div style={{ fontSize: 12, color: "var(--text-muted)", textAlign: "right", marginBottom: 6 }}>
-                    {p.milestones.filter(m => m.done).length}/{p.milestones.length} milestones
-                  </div>
+                  <div style={{ fontSize: 12, color: "var(--text-muted)", textAlign: "right", marginBottom: 6 }}>{p.milestones.filter(m => m.done).length}/{p.milestones.length} milestones</div>
                   <ProgressBar value={p.progress} status={p.status} />
                   <div style={{ fontSize: 12, fontWeight: 700, color: "var(--navy)", textAlign: "right", marginTop: 4 }}>{p.progress}%</div>
                 </div>
@@ -765,9 +755,7 @@ const PoliciesView = ({ policies, ministries, onSelectPolicy }) => {
           );
         })}
         {filtered.length === 0 && (
-          <div style={{ textAlign: "center", padding: "48px", color: "var(--text-muted)", background: "#fff", borderRadius: 12, border: "1px solid var(--border)" }}>
-            No policies match your filters.
-          </div>
+          <div style={{ textAlign: "center", padding: "48px", color: "var(--text-muted)", background: "#fff", borderRadius: 12, border: "1px solid var(--border)" }}>No policies match your filters.</div>
         )}
       </div>
     </div>
@@ -831,11 +819,7 @@ const MinistriesView = ({ policies, ministries, onSelectPolicy }) => (
 
 const Header = ({ view, setView }) => {
   const navBtn = (label, id) => (
-    <button onClick={() => setView(id)} style={{
-      background: "none", border: "none", color: view === id ? "#fff" : "rgba(255,255,255,0.65)",
-      fontSize: 14, fontWeight: view === id ? 600 : 400, padding: "8px 16px", borderRadius: 8, transition: "all 0.15s",
-      borderBottom: view === id ? "2px solid var(--coral)" : "2px solid transparent",
-    }}>{label}</button>
+    <button onClick={() => setView(id)} style={{ background: "none", border: "none", color: view === id ? "#fff" : "rgba(255,255,255,0.65)", fontSize: 14, fontWeight: view === id ? 600 : 400, padding: "8px 16px", borderRadius: 8, transition: "all 0.15s", borderBottom: view === id ? "2px solid var(--coral)" : "2px solid transparent" }}>{label}</button>
   );
   return (
     <header style={{ background: "var(--navy)", borderBottom: "1px solid rgba(255,255,255,0.1)", position: "sticky", top: 0, zIndex: 100 }}>
@@ -854,9 +838,7 @@ const Header = ({ view, setView }) => {
           {navBtn("Policies", "policies")}
           {navBtn("Ministries", "ministries")}
         </nav>
-        <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>
-          Updated May 2026
-        </div>
+        <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Updated 18 May 2026</div>
       </div>
     </header>
   );
@@ -865,24 +847,16 @@ const Header = ({ view, setView }) => {
 const App = () => {
   const [view, setView] = React.useState("dashboard");
   const [selectedPolicy, setSelectedPolicy] = React.useState(null);
-
-  const openPolicy = (p) => setSelectedPolicy(p);
-  const closePolicy = () => setSelectedPolicy(null);
-
   return (
     <div style={{ minHeight: "100vh", background: "var(--bg)" }}>
-      <style>{`
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-      `}</style>
+      <style>{`@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }`}</style>
       <Header view={view} setView={setView} />
       <main>
-        {view === "dashboard" && <DashboardView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={openPolicy} />}
-        {view === "policies" && <PoliciesView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={openPolicy} />}
-        {view === "ministries" && <MinistriesView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={openPolicy} />}
+        {view === "dashboard" && <DashboardView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={setSelectedPolicy} />}
+        {view === "policies" && <PoliciesView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={setSelectedPolicy} />}
+        {view === "ministries" && <MinistriesView policies={POLICIES} ministries={MINISTRIES} onSelectPolicy={setSelectedPolicy} />}
       </main>
-      {selectedPolicy && (
-        <PolicyDetail policy={selectedPolicy} ministries={MINISTRIES} onClose={closePolicy} />
-      )}
+      {selectedPolicy && <PolicyDetail policy={selectedPolicy} ministries={MINISTRIES} onClose={() => setSelectedPolicy(null)} />}
     </div>
   );
 };
