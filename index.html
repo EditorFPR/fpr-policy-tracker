@@ -643,7 +643,7 @@ const DashboardView = ({ policies, ministries, onSelectPolicy }) => {
                   <span style={{ fontSize: 12, color: "var(--text-muted)" }}>{delivered}/{count} delivered</span>
                 </div>
                 <div style={{ height: 8, background: "#EFF2F7", borderRadius: 4, overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${(delivered/count)*100}%`, background: "var(--coral)", borderRadius: 4 }} />
+                  <div style={{ height: "100%", width: `${Math.max((delivered/count)*100, delivered > 0 ? 2 : 0)}%`, background: "var(--coral)", borderRadius: 4 }} />
                 </div>
               </div>
             ))}
