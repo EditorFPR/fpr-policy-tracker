@@ -416,7 +416,7 @@ const POLICIES = [
       { label: "Embassy planning and approval", done: true, date: "2023-2024" },
       { label: "Jerusalem embassy established", done: true, date: "2025" },
     ],
-    impact: "Fiji embassy in Jerusalem successfully established as promised.",
+    impact: "Fiji Embassy in Jerusalem inaugurated September 2025. PM Rabuka attended in person.",
   },
   {
     id: 25, title: "Fuel Crisis Response Package ($56M)",
@@ -707,6 +707,22 @@ const POLICIES = [
     ],
     impact: "First Pacific GCM Champion Country. Remittances exceeded $1B in 2024. IOM partnership workshop March 2026. National Diaspora Policy in development.",
   }
+  },
+  {
+    id: 42, title: "Israeli Embassy Opens in Fiji",
+    ministry: "foreign", category: "Foreign Policy", status: "Delivered", progress: 100,
+    description: "Israeli Foreign Affairs Minister Gideon Sa'ar travelled to Suva on 2 June 2026 to inaugurate Israel's permanent diplomatic base in Fiji. Prime Minister Rabuka described the opening as the start of 'a golden era' between the two nations and affirmed Fiji's support for Israel's security concerns. The opening fulfilled a coalition government commitment. Sa'ar signed bilateral cooperation agreements covering maritime and border security including patrol vessels, modern irrigation, climate-smart agriculture, and digital and communications cooperation. PM Rabuka said Israel's human rights obligations under international law were 'none of our business' — a statement that drew criticism from human rights advocates.",
+    commitmentType: "Coalition Agreement Commitment", year: 2022, updated: "June 2026",
+    milestones: [
+      { label: "Israeli Embassy in Fiji identified as coalition condition", done: true, date: "Dec 2022" },
+      { label: "Fiji Embassy in Jerusalem established", done: true, date: "2025" },
+      { label: "PM Rabuka attends Fiji Embassy inauguration in Jerusalem", done: true, date: "Sep 2025" },
+      { label: "Israeli FM Sa'ar travels to Suva for embassy inauguration", done: true, date: "2 Jun 2026" },
+      { label: "Israeli Embassy formally opened in Suva", done: true, date: "2 Jun 2026" },
+      { label: "Bilateral cooperation agreements signed — security, agriculture, digital", done: true, date: "2 Jun 2026" },
+    ],
+    impact: "Israeli Embassy opened in Suva 2 June 2026. Bilateral cooperation agreements signed covering maritime security, patrol vessels, irrigation, and digital cooperation. Significant criticism from human rights advocates domestically and regionally.",
+  }
 ];
 
 const STATUS_META = {
@@ -878,7 +894,7 @@ const DashboardView = ({ policies, ministries, onSelectPolicy }) => {
         <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>Coalition Government Policy Tracker</h1>
         <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>
         Tracking {total} real commitments by Rabuka's Coalition Government since December 2022. Based on manifesto promises, parliamentary Hansard, and ministerial statements.
-          <strong style={{ color: "var(--coral)" }}> Updated 18 May 2026</strong>
+          <strong style={{ color: "var(--coral)" }}> Updated 3 June 2026</strong>
         </p>
       </div>
       <div style={{ display: "flex", gap: 16, marginBottom: 28, flexWrap: "wrap" }}>
@@ -1035,7 +1051,7 @@ const MinistriesView = ({ policies, ministries, onSelectPolicy }) => (
   <div style={{ maxWidth: 1140, margin: "0 auto", padding: "32px 24px" }}>
     <div style={{ marginBottom: 28 }}>
       <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>By Ministry</h1>
-      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Policy progress by current ministers (as of May 2026)</p>
+      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Policy progress by current ministers (as of June 2026)</p>
     </div>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
       {ministries.map(min => {
@@ -1107,7 +1123,7 @@ const Header = ({ view, setView }) => {
           {navBtn("Policies", "policies")}
           {navBtn("Ministries", "ministries")}
         </nav>
-        <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Updated 18 May 2026</div>
+        <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Updated 3 June 2026</div>
         <a href="https://fijipoliticalreview.com/about-the-fprs-interactive-tools/" style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginLeft: 16, textDecoration: "none" }}>About this tracker</a>
       </div>
     </header>
