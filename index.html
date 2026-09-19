@@ -89,9 +89,9 @@ const POLICIES = [
   },
   {
     id: 2, title: "Constitutional Reform Process",
-    ministry: "justice", category: "Governance", status: "In Progress", progress: 60,
-    description: "Comprehensive review of the 2013 Constitution to address democratic deficits. Amendment Bill to reduce amendment threshold from 75% to 66% was defeated by one vote in March 2025. The National Referendum Bill 2025 — establishing Fiji's first constitutional referendum framework — was introduced in December 2025 and referred to the Standing Committee on Justice, Law and Human Rights. The Bill has attracted significant controversy, with civil society, legal experts, and former AG Sayed-Khaiyum calling it 'draconian' for restricting public campaigning during a referendum. The Constitutional Review Commission is expected to deliver its report to the President by 31 August 2026.",
-    commitmentType: "Coalition Manifesto Promise", year: 2022, updated: "May 2026",
+    ministry: "justice", category: "Governance", status: "In Progress", progress: 75,
+    description: "Comprehensive review of the 2013 Constitution to address democratic deficits. Amendment Bill to reduce amendment threshold from 75% to 66% was defeated by one vote in March 2025. The National Referendum Bill 2025 was introduced in December 2025 and referred to the Standing Committee on Justice, Law and Human Rights, where it remains as of September 2026. The seven-member Constitutional Review Commission, chaired by Sevuloni Valenitabua, was commissioned in March 2026 and given until 31 August 2026 to report. On 31 August 2026 the CRC handed its Review Report and a Draft Constitution of the Republic of Fiji 2026 to President Ratu Naiqama Lalabalavu, who then transmitted it to the Prime Minister. The draft was prepared in five weeks with support from three overseas legal experts — Professor Anthony Regan, Dr Kathrene Le Roy and Fiona Leonard. PM Rabuka has directed Acting Attorney-General Siromi Turaga to bring the report to Cabinet on 8 September 2026, with Bills to reach Parliament at the sitting beginning 28 September 2026. The full CRC report has not yet been released publicly — SEEP and other civil society groups are calling for transparency.",
+    commitmentType: "Coalition Manifesto Promise", year: 2022, updated: "September 2026",
     milestones: [
       { label: "Supreme Court advisory opinion sought", done: true, date: "2024" },
       { label: "Supreme Court lowers amendment threshold to two-thirds", done: true, date: "Aug 2025" },
@@ -100,10 +100,14 @@ const POLICIES = [
       { label: "National Referendum Bill introduced to Parliament", done: true, date: "Dec 2025" },
       { label: "Standing Committee public hearings concluded", done: true, date: "Early 2026" },
       { label: "Former AG Sayed-Khaiyum calls Bill 'draconian' in committee testimony", done: true, date: "30 Mar 2026" },
-      { label: "Standing Committee report to Parliament", done: false, date: "Mid 2026" },
+      { label: "CRC commissioned by President, seven members sworn in", done: true, date: "Mar 2026" },
+      { label: "CRC hands Review Report and Draft Constitution 2026 to President", done: true, date: "31 Aug 2026" },
+      { label: "Cabinet to consider CRC Report and draft Bills", done: false, date: "8 Sep 2026" },
+      { label: "Special Parliament sitting to receive Bills", done: false, date: "28 Sep 2026" },
+      { label: "National Referendum Bill reported out of Standing Committee", done: false, date: "TBC" },
       { label: "Constitutional referendum", done: false, date: "2026-2027" },
     ],
-    impact: "Referendum Bill before Parliament after committee review. Significant civil society and legal opposition to campaigning restrictions in the Bill. CRC reports 31 August 2026. General election due August 2026–February 2027.",
+    impact: "CRC delivered Review Report and Draft Constitution 2026 to the President on 31 August 2026, six months after being commissioned. Cabinet consideration scheduled 8 September; Parliament sitting to begin 28 September. Referendum Bill still stalled in Standing Committee — no framework yet for a national vote. Full CRC report not yet public.",
   },
   {
     id: 3, title: "VAT Increase (9% to 15%, revised to 12.5%)",
@@ -239,18 +243,22 @@ const POLICIES = [
   },
   {
     id: 13, title: "Local Government Elections (100 days)",
-    ministry: "justice", category: "Governance", status: "Delayed", progress: 50,
-    description: "PAP manifesto commitment to restore local government elections within first 100 days. Elections were not delivered in the first 100 days or in the three years following. Local government elections were scheduled for September 2026 — the first since 2005. Cabinet approved the date and $1 million was allocated in the national budget. Voter registration opened 13 April 2026. A civic education campaign and nationwide FEO outreach programme began in early 2026. However, on 18 May 2026, Prime Minister Rabuka signalled the September elections may not proceed, citing the fuel crisis, budget constraints, constitutional review priorities, and national election preparations. No formal decision has been announced but the commitment is now in serious doubt. The FEO has been preparing operationally since December 2025 — 72 polling venues planned, election officials recruited, combined voter cards prepared.",
-    commitmentType: "PAP Manifesto Promise", year: 2022, updated: "May 2026",
-    delayReason: "100-day promise not kept. Elections repeatedly deferred from 2023 through 2025. Scheduled for September 2026 but PM Rabuka signalled on 18 May 2026 that even this date may slip, citing fuel crisis, budget constraints and constitutional review.",
+    ministry: "justice", category: "Governance", status: "Delayed", progress: 40,
+    description: "PAP manifesto commitment to restore local government elections within the first 100 days. Elections were not delivered in the first 100 days or in the three years following. Preparations for a September 2026 poll were well advanced — Cabinet had approved the date, $1M was allocated in the budget, voter registration opened 13 April 2026, and the FEO had recruited over 11,000 election officials. On 21 May 2026, PM Rabuka announced in a live televised national address that Cabinet had decided to defer the local government elections to a date to be determined after the coming general elections. Rabuka cited global economic headwinds, fiscal pressure from the fuel crisis, voter fatigue, and the ~$18M cost in the 2026-2027 budget. Existing municipal administrators remain in place. The Fiji Labour Party, Dialogue Fiji, and opposition figures have criticised the deferral. FEO says it will redirect resources to the general election.",
+    commitmentType: "PAP Manifesto Promise", year: 2022, updated: "September 2026",
+    delayReason: "100-day promise not kept. Elections repeatedly deferred from 2023 through 2025. September 2026 date confirmed then deferred by Cabinet on 21 May 2026 to a date after the general election, citing fuel crisis, voter fatigue and budget constraints.",
     milestones: [
       { label: "100-day deadline passed without elections", done: true, date: "Apr 2023" },
       { label: "$1M allocated in national budget for local elections", done: true, date: "2025" },
       { label: "September 2026 date confirmed by Cabinet", done: true, date: "Dec 2025" },
       { label: "Civic education campaign and FEO voter registration commenced", done: true, date: "Apr 2026" },
-      { label: "Local government elections held", done: false, date: "Sep 2026 — at risk" },
+      { label: "11,333 election officials recruited in Phase 1", done: true, date: "Apr-May 2026" },
+      { label: "PM Rabuka signals possible postponement", done: true, date: "19 May 2026" },
+      { label: "Cabinet defers elections in televised national address", done: true, date: "21 May 2026" },
+      { label: "New date set after general election", done: false, date: "Post-2027" },
+      { label: "Local government elections held", done: false, date: "TBC" },
     ],
-    impact: "Elections scheduled for September 2026 — the first local polls since 2005. 141 councillors to be elected across 13 municipalities. Significantly delayed from original 100-day promise. PM Rabuka signalled 18 May 2026 elections may be further postponed.",
+    impact: "Elections formally deferred by Cabinet on 21 May 2026 despite advanced preparations. First local polls since 2005 postponed until after the general election. 141 councillor seats across 13 municipalities remain filled by appointed administrators. Original 100-day PAP manifesto promise now missed by more than three and a half years.",
   },
   {
     id: 14, title: "Great Council of Chiefs Restoration",
@@ -315,8 +323,8 @@ const POLICIES = [
   {
     id: 19, title: "Western Realignment & China Policy Reset",
     ministry: "defence", category: "Foreign Policy", status: "Delivered", progress: 100,
-    description: "The Coalition Government reversed the Bainimarama era's 'Look North' China policy, pivoting back toward traditional partners Australia, New Zealand, and the United States. Key actions included terminating the 2011 China-Fiji police MOU in January 2023, reinstating the Taiwanese mission's official name in March 2023, and deepening the Vuvale Partnership with Australia. After a 13-month review, the policing relationship with China was partially restored in March 2024 — but with the firm condition that no Chinese police would be embedded with the Fiji Police Force. The Vuvale Union — a treaty-level framework with Australia covering security, economic cooperation and people-to-people ties — was approved by Cabinet on 8 May 2026.",
-    commitmentType: "Coalition Government Policy", year: 2023, updated: "May 2026",
+    description: "The Coalition Government reversed the Bainimarama era's 'Look North' China policy, pivoting back toward traditional partners Australia, New Zealand, and the United States. Key early actions included terminating the 2011 China-Fiji police MOU in January 2023, reinstating the Taiwanese mission's official name in March 2023, and deepening the Vuvale Partnership with Australia. After a 13-month review, the policing relationship with China was partially restored in March 2024 — but with the firm condition that no Chinese police would be embedded with the Fiji Police Force. The Vuvale Union — a treaty-level framework with Australia covering security, economic cooperation, climate, labour mobility and people-to-people ties — was signed by PM Rabuka and PM Albanese on 6 July 2026. Signed on the same day was the Ocean of Peace Alliance (Veitacini Treaty), a mutual defence pact and only Australia's fourth ever formal treaty. Both agreements require Parliament ratification in Fiji and Australia to enter force. Australia's FM Penny Wong tabled both treaties in the Australian Parliament on 12 August 2026. The associated AUD $1 billion / FJD $1.57 billion Australian funding package is contingent on ratification.",
+    commitmentType: "Coalition Government Policy", year: 2023, updated: "September 2026",
     milestones: [
       { label: "China police MOU terminated", done: true, date: "26 Jan 2023" },
       { label: "DPM Gavoka meets Taiwan representative publicly", done: true, date: "Jan 2023" },
@@ -325,8 +333,11 @@ const POLICIES = [
       { label: "13-month review of China policing relationship", done: true, date: "2023–2024" },
       { label: "China policing relationship partially restored — no embedded officers", done: true, date: "Mar 2024" },
       { label: "Vuvale Union framework approved by Cabinet", done: true, date: "8 May 2026" },
+      { label: "Vuvale Union and Ocean of Peace Alliance signed with Australia", done: true, date: "6 Jul 2026" },
+      { label: "Australia tables both treaties in its Parliament", done: true, date: "12 Aug 2026" },
+      { label: "Fiji Parliament ratification of Vuvale Union and Ocean of Peace Alliance", done: false, date: "2026" },
     ],
-    impact: "Decisive pivot away from Bainimarama's 'Look North' China policy. Chinese police no longer embedded in Fiji Police Force. Taiwan mission formally reinstated. Vuvale Union framework approved by Cabinet 8 May 2026 — Parliament has not yet approved it.",
+    impact: "Decisive pivot away from Bainimarama's 'Look North' China policy. Chinese police no longer embedded in Fiji Police Force. Taiwan mission reinstated. Vuvale Union and Ocean of Peace Alliance signed 6 July 2026 — the latter is Fiji's first-ever formal treaty and Australia's fourth. AUD $1B / FJD $1.57B funding package contingent on Fiji Parliament ratification, expected at the August-September 2026 sitting.",
   },
   {
     id: 20, title: "MIDA Repeal & Press Freedom",
@@ -439,19 +450,22 @@ const POLICIES = [
   {
     id: 26, title: "Employment Relations & Workplace Safety Reform",
     ministry: "employment", category: "Economy", status: "In Progress", progress: 25,
-    description: "The Coalition Government has committed to a comprehensive overhaul of Fiji's labour framework through two related reform streams. The Employment Relations Amendment Bill — confirmed by PM Rabuka at the 51st FTUC Biennial Conference on 10 May 2026 for tabling at the 25–28 May Parliament sitting — is intended to strengthen workers' rights, align Fiji with international labour standards, and restore tripartite cooperation. This commitment was made during the 2022 election campaign and has been repeatedly delayed. In parallel, Minister Agni Deo Singh announced on 28 April 2026 at the World Day for Safety and Health at Work that new occupational health and safety regulations are being developed to improve workplace monitoring, early intervention, and worker wellbeing — with explicit focus on psychosocial hazards. Fiji continues to adopt a tripartite approach with ILO guidance.",
-    commitmentType: "Coalition Election Promise", year: 2022, updated: "May 2026",
+    description: "The Coalition Government has committed to a comprehensive overhaul of Fiji's labour framework through two related reform streams. On 10 May 2026, at the 51st FTUC Biennial Conference, PM Rabuka confirmed the Employment Relations Amendment Bill would be tabled at the 25-28 May 2026 Parliament sitting. That did not happen. On 28 May 2026, Minister Agni Deo Singh told Parliament the amendments were still with the Solicitor-General's Office for final drafting and would be tabled at 'the next session of Parliament'. Fiji currently holds a rating of 4 on the ITUC Global Rights Index 2026 — a category signalling systematic violations of workers' rights — which Minister Singh has said the reforms are designed to improve. In parallel, new occupational health and safety regulations announced on 28 April 2026 focus on workplace monitoring, early intervention, and psychosocial hazards, developed with ILO guidance. Note: an Employment Relations (Amendment) Bill (Bill No. 27 of 2025) was reportedly tabled in August 2025 — the relationship between that Bill and the 2026 amendments the Minister is describing is unclear from public sources.",
+    commitmentType: "Coalition Election Promise", year: 2022, updated: "September 2026",
     milestones: [
       { label: "Promise made during 2022 election campaign", done: true, date: "2022" },
       { label: "Employment Relations Advisory Board restored", done: true, date: "2023" },
       { label: "Minimum wage raised to $5/hour", done: true, date: "2023" },
+      { label: "Employment Relations (Amendment) Bill No. 27 of 2025 reportedly tabled", done: true, date: "Aug 2025" },
       { label: "New OHS regulations announced — workplace monitoring and psychosocial hazards", done: true, date: "28 Apr 2026" },
-      { label: "Employment Relations Amendment Bill confirmed for tabling", done: true, date: "10 May 2026" },
-      { label: "Employment Relations Amendment Bill tabled in Parliament", done: false, date: "25-28 May 2026" },
+      { label: "PM Rabuka commits to tabling Bill at May sitting", done: true, date: "10 May 2026" },
+      { label: "May sitting concludes without Bill being tabled", done: true, date: "28 May 2026" },
+      { label: "Minister Singh confirms Bill still with Solicitor-General", done: true, date: "28 May 2026" },
+      { label: "Employment Relations Amendment Bill tabled in Parliament", done: false, date: "2026" },
       { label: "OHS regulations gazetted", done: false, date: "2026" },
       { label: "Employment Relations Amendment Bill passed into law", done: false, date: "2026" },
     ],
-    impact: "OHS reform announced 28 April 2026. Employment Relations Amendment Bill confirmed for May 2026 sitting. Minimum wage raised to $5/hour. Tripartite approach with ILO guidance.",
+    impact: "Bill not tabled at the May 2026 sitting despite public commitment. As of late May 2026 still with Solicitor-General. OHS reform announced 28 April 2026. Fiji currently rated 4 on ITUC Global Rights Index 2026. Minimum wage raised to $5/hour. Tripartite approach with ILO guidance ongoing.",
   },
   {
     id: 35, title: "National Development Plan 2025–2029 & Vision 2050",
@@ -639,21 +653,26 @@ const POLICIES = [
   },
   {
     id: 33, title: "Immigration Service Modernisation",
-    ministry: "immigration", category: "Governance", status: "In Progress", progress: 50,
-    description: "Minister Viliame Naupoto, sworn in on 10 January 2025, has pursued a programme of immigration service reform focused on expanding office infrastructure, upgrading the passport system, and streamlining visa and work permit processing. From April 2025, all work permit applications are processed strictly under the Immigration Act 2003. A new Nakasi immigration office is opening by end of May 2026 to ease congestion on the Suva-Nausori corridor. A new Rakiraki office is being finalised. Relocations of the Savusavu and Lautoka offices are planned. The online passport portal has had daily appointment slots increased from December 2025. A MOU with the Ministry of iTaukei Affairs allows Fijians overseas registered in the Vola ni Kawa Bula to work and reside in Fiji visa-free. Fiji also hosted a Preparatory Meeting of the Global Compact for Safe, Orderly and Regular Migration (GCM) Champion Countries in Asia and the Pacific in March 2026.",
-    commitmentType: "Coalition Government Policy", year: 2025, updated: "May 2026",
+    ministry: "immigration", category: "Governance", status: "In Progress", progress: 55,
+    description: "Minister Viliame Naupoto, sworn in on 10 January 2025, has pursued a programme of immigration service reform focused on expanding office infrastructure, upgrading the passport system, and streamlining visa and work permit processing. From April 2025, all work permit applications are processed strictly under the Immigration Act 2003. Plans for new offices in Nakasi and Rakiraki, originally targeted for end of May 2026, slipped and are now funded and being progressed under the 2026-2027 National Budget. Ministry budget for 2026-2027 is $14.8M — a $3M reduction from the previous year — with the reduction reflecting completion of major modernisation work in the prior budget. Two new systems are being introduced: an Advance Passenger Information / Passenger Name Record (API/PNR) system for pre-arrival passenger data, and the MERIT border management system (Australian-supported) which replaces the current Informatics system and paves the way for e-gates at international airports. Relocations of the Savusavu and Lautoka offices are also planned. A temporary reduction in Pacific national visitor visa fees took effect 1 June 2026 for 12 months. Streamlined administrative processing of relevant work permit applications takes effect 1 September 2026. A MOU with the Ministry of iTaukei Affairs allows Fijians overseas registered in the Vola ni Kawa Bula to work and reside in Fiji visa-free. Fiji hosted a Preparatory Meeting of the Global Compact for Safe, Orderly and Regular Migration (GCM) Champion Countries in Asia and the Pacific in March 2026.",
+    commitmentType: "Coalition Government Policy", year: 2025, updated: "September 2026",
     milestones: [
       { label: "Naupoto sworn in as Minister for Immigration", done: true, date: "10 Jan 2025" },
       { label: "Work permit applications strictly under Immigration Act 2003", done: true, date: "Apr 2025" },
       { label: "Online passport portal — daily slots increased", done: true, date: "Dec 2025" },
       { label: "MOU with iTaukei Affairs — Vola ni Kawa Bula diaspora visa-free rights", done: true, date: "2025" },
       { label: "GCM Champion Countries Preparatory Meeting hosted in Fiji", done: true, date: "23 Mar 2026" },
-      { label: "Passport system upgrades completed", done: false, date: "May 2026" },
-      { label: "Nakasi immigration office opens", done: false, date: "May 2026" },
-      { label: "Rakiraki immigration office opens", done: false, date: "2026" },
-      { label: "Savusavu and Lautoka office relocations", done: false, date: "2026" },
+      { label: "Original Nakasi and Rakiraki office deadline missed", done: true, date: "May 2026" },
+      { label: "Pacific visitor visa fee reduction takes effect (12 months)", done: true, date: "1 Jun 2026" },
+      { label: "2026-2027 budget confirms Nakasi and Rakiraki offices, API/PNR, MERIT", done: true, date: "Jun 2026" },
+      { label: "Work permit administrative processing streamlined", done: true, date: "1 Sep 2026" },
+      { label: "Nakasi and Rakiraki offices open", done: false, date: "2026-2027" },
+      { label: "API/PNR system operational", done: false, date: "2026-2027" },
+      { label: "MERIT border management system deployed", done: false, date: "2026-2027" },
+      { label: "Savusavu and Lautoka office relocations", done: false, date: "2026-2027" },
+      { label: "E-gates at international airports operational", done: false, date: "TBC" },
     ],
-    impact: "New Nakasi office targeting May 2026. Passport portal upgraded. Work permit processing tightened. Diaspora visa-free rights via Vola ni Kawa Bula MOU. GCM regional meeting hosted March 2026.",
+    impact: "May 2026 target for Nakasi and Rakiraki offices missed. Both funded in 2026-2027 budget alongside API/PNR system and Australian-supported MERIT border system. Pacific visitor visa fee cut effective June 2026. Streamlined work permit processing from 1 September 2026. Ministry budget down $3M to $14.8M following prior-year modernisation spend.",
   },
   {
     id: 34, title: "Police Modernisation & Crime Reform",
@@ -761,6 +780,21 @@ const POLICIES = [
       { label: "New citizenship provisions commence", done: false, date: "2026" },
     ],
     impact: "Citizenship by naturalisation qualifying period increased from 5 to 8 years. Naturalisation applications suspended since Oct 2025 now subject to new framework. Immigration officers gain expanded powers including warrantless search authority — civil liberties concerns on record.",
+  },
+  {
+    id: 46, title: "Ocean of Peace Alliance (Veitacini Treaty)",
+    ministry: "defence", category: "Foreign Policy", status: "In Progress", progress: 55,
+    description: "The Ocean of Peace Alliance, formally the Veitacini Treaty, is a mutual defence and regional peace treaty between Fiji and Australia, signed by PM Rabuka and PM Albanese in Suva on 6 July 2026. It operationalises the Blue Pacific Ocean of Peace Declaration endorsed by Pacific leaders at the 54th Pacific Islands Forum in 2025 — an initiative championed by PM Rabuka. The treaty is Fiji's first-ever formal treaty and only Australia's fourth (after the US, New Zealand, and Papua New Guinea). Both parties treat an attack on one as an attack on the other. Australian FM Penny Wong tabled the treaty in the Australian Parliament for ratification on 12 August 2026. Fiji tabling was expected at the August-September 2026 Parliament sitting. The treaty must be ratified by both parliaments to enter force.",
+    commitmentType: "Coalition Government Policy", year: 2025, updated: "September 2026",
+    milestones: [
+      { label: "Blue Pacific Ocean of Peace Declaration endorsed at 54th PIF", done: true, date: "2025" },
+      { label: "Ocean of Peace Alliance / Veitacini Treaty signed by Fiji and Australia", done: true, date: "6 Jul 2026" },
+      { label: "Australia tables treaty in its Parliament for ratification", done: true, date: "12 Aug 2026" },
+      { label: "Fiji Parliament ratification", done: false, date: "2026" },
+      { label: "Australian Parliament ratification", done: false, date: "2026" },
+      { label: "Treaty enters into force", done: false, date: "TBC" },
+    ],
+    impact: "First-ever formal Fijian treaty and Australia's fourth. Mutual defence commitment. Signed 6 July 2026. Requires ratification by both parliaments. Positions Fiji as the anchor Pacific state in the Ocean of Peace framework and marks the most substantial defence upgrade in Fiji-Australia relations since independence.",
   }
 ];
 
@@ -933,7 +967,7 @@ const DashboardView = ({ policies, ministries, onSelectPolicy }) => {
         <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>Coalition Government Policy Tracker</h1>
         <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>
         Tracking {total} real commitments by Rabuka's Coalition Government since December 2022. Based on manifesto promises, parliamentary Hansard, and ministerial statements.
-          <strong style={{ color: "var(--coral)" }}> Updated 4 June 2026</strong>
+          <strong style={{ color: "var(--coral)" }}> Updated 19 September 2026</strong>
         </p>
       </div>
       <div style={{ display: "flex", gap: 16, marginBottom: 28, flexWrap: "wrap" }}>
@@ -1090,7 +1124,7 @@ const MinistriesView = ({ policies, ministries, onSelectPolicy }) => (
   <div style={{ maxWidth: 1140, margin: "0 auto", padding: "32px 24px" }}>
     <div style={{ marginBottom: 28 }}>
       <h1 style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 26, fontWeight: 700, color: "var(--navy)" }}>By Ministry</h1>
-      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Policy progress by current ministers (as of June 2026)</p>
+      <p style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 6 }}>Policy progress by current ministers (as of September 2026)</p>
     </div>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
       {ministries.map(min => {
@@ -1162,7 +1196,7 @@ const Header = ({ view, setView }) => {
           {navBtn("Policies", "policies")}
           {navBtn("Ministries", "ministries")}
         </nav>
-        <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Updated 3 June 2026</div>
+        <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Updated 19 September 2026</div>
         <a href="https://fijipoliticalreview.com/about-the-fprs-interactive-tools/" style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginLeft: 16, textDecoration: "none" }}>About this tracker</a>
       </div>
     </header>
